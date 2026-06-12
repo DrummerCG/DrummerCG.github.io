@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alexander Cano González – Frontend Developer & QA Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
+<style>
+/* ── TOKENS ── */
+:root{
+  --navy:#1c3c6c;--navy2:#162f55;--navy3:#0f2240;
+  --accent:#4a8eff;--gold:#f0c040;
+  --light:#e8edf6;--white:#ffffff;
+  --text:#1a2540;--muted:#667090;
+  --card:#f4f7fd;--border:#d0daea;
+  --radius:14px;--shadow:0 4px 24px rgba(28,60,108,.13);
+  --page-w:900px;
+}
+
+/* ── DARK MODE TOKENS ── */
+[data-theme="dark"]{
+  --navy:#4a8eff;--navy2:#5a9eff;--navy3:#2a5fd4;
+  --accent:#7ab3ff;--gold:#f0c040;
+  --light:#1e2535;--white:#161d2e;
+  --text:#e0e8f8;--muted:#8899bb;
+  --card:#1a2540;--border:#2a3a5a;
+  --shadow:0 4px 24px rgba(0,0,0,.45);
+  --bg:#0d1525;
+}
+[data-theme="dark"] body{background:#0d1525;}
+[data-theme="dark"] .page{background:var(--white);}
+[data-theme="dark"] .nav-tab{background:var(--card);color:var(--text);}
+[data-theme="dark"] .nav-tab.active{background:var(--accent);color:#0d1525;}
+[data-theme="dark"] .nav-btn{background:var(--card);color:var(--text);}
+[data-theme="dark"] .nav-btn:hover{background:var(--accent);color:#0d1525;}
+[data-theme="dark"] .profile-block p,[data-theme="dark"] .tl-content p,[data-theme="dark"] .service-card p,[data-theme="dark"] .project-body p,[data-theme="dark"] .extra-text{color:#aabbd8;}
+[data-theme="dark"] .cover{background:linear-gradient(145deg,#080f1e 0%,#0d1a36 55%,#102050 100%);}
+[data-theme="dark"] .cover-bottom{background:rgba(0,0,0,.5);}
+[data-theme="dark"] .page-header{background:linear-gradient(135deg,#0d1a36 0%,#0f2040 60%,#1a3060 100%);}
+[data-theme="dark"] .photo-modal{background:var(--card);}
+[data-theme="dark"] .photo-modal h3{color:var(--text);}
+[data-theme="dark"] .btn-modal.cancel{background:var(--border);color:var(--text);}
+[data-theme="dark"] .section-title{color:var(--accent);}
+[data-theme="dark"] code{background:#0d1525;color:#7ab3ff;padding:1px 5px;border-radius:4px;}
+[data-theme="dark"] .contact-item i{background:var(--accent);color:#0d1525;}
+
+/* ── DARK TOGGLE BUTTON ── */
+.dark-toggle{
+  width:38px;height:38px;border-radius:9px;border:none;cursor:pointer;
+  background:var(--white);color:var(--navy);font-size:.95rem;
+  box-shadow:0 1px 6px rgba(28,60,108,.12);
+  transition:all .2s;display:grid;place-items:center;
+}
+.dark-toggle:hover{background:var(--navy);color:var(--white);}
+[data-theme="dark"] .dark-toggle{background:var(--card);color:var(--gold);}
+[data-theme="dark"] .dark-toggle:hover{background:var(--gold);color:#0d1525;}
+
+/* ── LANG TOGGLE ── */
+.lang-toggle{
+  height:38px;padding:0 12px;border-radius:9px;border:none;cursor:pointer;
+  background:var(--white);color:var(--navy);font-size:.75rem;font-weight:700;
+  font-family:'Syne',sans-serif;
+  box-shadow:0 1px 6px rgba(28,60,108,.12);
+  transition:all .2s;display:flex;align-items:center;gap:5px;
+}
+.lang-toggle:hover{background:var(--navy);color:var(--white);}
+[data-theme="dark"] .lang-toggle{background:var(--card);color:var(--text);}
+[data-theme="dark"] .lang-toggle:hover{background:var(--accent);color:#0d1525;}
+
+/* ── EXPORT BTN ── */
+.export-btn{
+  height:38px;padding:0 12px;border-radius:9px;border:none;cursor:pointer;
+  background:var(--white);color:var(--navy);font-size:.75rem;font-weight:700;
+  font-family:'Syne',sans-serif;
+  box-shadow:0 1px 6px rgba(28,60,108,.12);
+  transition:all .2s;display:flex;align-items:center;gap:5px;
+}
+.export-btn:hover{background:var(--gold);color:var(--navy);}
+[data-theme="dark"] .export-btn{background:var(--card);color:var(--text);}
+
+/* ── CONTACT FORM ── */
+.contact-form{display:flex;flex-direction:column;gap:12px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-field{display:flex;flex-direction:column;gap:5px;}
+.form-field label{font-size:.78rem;font-weight:700;color:var(--navy);font-family:'Syne',sans-serif;}
+[data-theme="dark"] .form-field label{color:var(--accent);}
+.form-field input,.form-field textarea,.form-field select{
+  padding:10px 13px;border-radius:9px;border:1.5px solid var(--border);
+  background:var(--light);color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:.85rem;
+  transition:border-color .2s,box-shadow .2s;outline:none;
+}
+.form-field input:focus,.form-field textarea:focus{
+  border-color:var(--accent);box-shadow:0 0 0 3px rgba(74,142,255,.15);
+}
+[data-theme="dark"] .form-field input,[data-theme="dark"] .form-field textarea{
+  background:#0d1525;border-color:var(--border);color:var(--text);
+}
+.form-field textarea{resize:vertical;min-height:100px;}
+.form-status{
+  padding:10px 14px;border-radius:9px;font-size:.83rem;font-weight:600;
+  display:none;align-items:center;gap:8px;
+}
+.form-status.success{background:#e3fcef;color:#1a7a4a;display:flex;}
+.form-status.error{background:#fde8e8;color:#b91c1c;display:flex;}
+.form-status.loading{background:#e8f0fe;color:var(--navy);display:flex;}
+[data-theme="dark"] .form-status.success{background:#0d2a1a;color:#4ade80;}
+[data-theme="dark"] .form-status.error{background:#2a0d0d;color:#f87171;}
+[data-theme="dark"] .form-status.loading{background:#0d1a36;color:var(--accent);}
+
+/* ── INTERSECTION OBSERVER ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .55s ease,transform .55s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-scale{opacity:0;transform:scale(.93);transition:opacity .5s ease,transform .5s ease;}
+.reveal-scale.visible{opacity:1;transform:scale(1);}
+.stagger > *{opacity:0;transform:translateY(20px);transition:opacity .45s ease,transform .45s ease;}
+.stagger > *.visible{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal-left,.reveal-scale,.stagger > *{transition:none;opacity:1;transform:none;}
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+#scrollProgress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--accent),var(--gold));
+  z-index:10000;transition:width .1s linear;
+  border-radius:0 3px 3px 0;
+}
+
+/* ── ANALYTICS BADGE ── */
+.analytics-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:6px 12px;font-size:.76rem;
+  color:var(--muted);font-family:'Syne',sans-serif;font-weight:600;
+}
+.analytics-chip i{color:var(--accent);}
+.analytics-chip strong{color:var(--navy);}
+[data-theme="dark"] .analytics-chip strong{color:var(--text);}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#e4eaf5;color:var(--text);
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:16px 12px 60px;
+}
+
+/* ── BOOK WRAPPER ── */
+.book-wrapper{width:100%;max-width:var(--page-w);position:relative;}
+
+/* ── NAV BAR ── */
+.nav-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  margin:0 0 12px;gap:8px;flex-wrap:wrap;
+}
+.nav-tabs{display:flex;gap:4px;flex-wrap:wrap;}
+.nav-tab{
+  font-family:'Syne',sans-serif;font-size:.75rem;font-weight:600;
+  padding:7px 13px;border-radius:8px;border:none;cursor:pointer;
+  background:var(--white);color:var(--navy);
+  transition:all .2s;box-shadow:0 1px 4px rgba(28,60,108,.10);
+  white-space:nowrap;
+}
+.nav-tab:hover{background:var(--light)}
+.nav-tab.active{background:var(--navy);color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.page-counter{
+  font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;
+  color:var(--muted);white-space:nowrap;
+}
+.nav-arrows{display:flex;gap:6px;}
+.nav-btn{
+  width:38px;height:38px;border-radius:9px;border:none;cursor:pointer;
+  background:var(--white);color:var(--navy);font-size:.95rem;
+  box-shadow:0 1px 6px rgba(28,60,108,.12);
+  transition:all .2s;display:grid;place-items:center;
+}
+.nav-btn:hover{background:var(--navy);color:var(--white)}
+
+/* ── PAGE (SCREEN) ── */
+.page{
+  display:none;background:var(--white);border-radius:18px;
+  overflow:hidden;box-shadow:0 8px 48px rgba(28,60,108,.18);
+  min-height:600px;animation:fadeIn .4s ease;
+}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── PAGE HEADER ── */
+.page-header{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#234b8a 100%);
+  padding:24px 36px 20px;display:flex;align-items:center;gap:14px;
+}
+.page-icon{
+  width:44px;height:44px;background:rgba(255,255,255,.12);border-radius:11px;
+  display:grid;place-items:center;font-size:18px;color:var(--gold);flex-shrink:0;
+}
+.page-header h2{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:var(--white);}
+.page-header p{font-size:.82rem;color:rgba(255,255,255,.6);margin-top:2px;}
+.page-body{padding:32px 36px 36px;}
+
+/* ── SECTION TITLE ── */
+.section-title{
+  font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;
+  color:var(--navy);margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title::after{content:'';flex:1;height:2px;background:var(--border);border-radius:2px;}
+
+/* ═══════════════════════
+   COVER
+═══════════════════════ */
+.cover{
+  background:linear-gradient(145deg,var(--navy3) 0%,var(--navy) 55%,#1e4a8c 100%);
+  display:flex;flex-direction:column;
+}
+.cover-top{
+  padding:48px 44px 32px;display:flex;gap:40px;align-items:flex-start;flex:1;
+}
+.cover-photo-col{display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;}
+.photo-frame{
+  width:150px;height:150px;border-radius:50%;
+  border:4px solid var(--gold);overflow:hidden;
+  background:rgba(255,255,255,.08);display:grid;place-items:center;
+  cursor:pointer;position:relative;
+  box-shadow:0 0 0 8px rgba(240,192,64,.15);transition:box-shadow .3s;
+  flex-shrink:0;
+}
+.photo-frame:hover{box-shadow:0 0 0 12px rgba(240,192,64,.22)}
+.photo-frame img{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;
+  transform-origin:center center;
+  transition:transform .1s;
+}
+.upload-hint{
+  position:absolute;inset:0;background:rgba(0,0,0,.55);border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;color:#fff;font-size:.75rem;text-align:center;padding:12px;
+  opacity:0;transition:opacity .2s;
+}
+.photo-frame:hover .upload-hint{opacity:1}
+#photoInput{display:none}
+
+/* ── PHOTO EDITOR MODAL ── */
+.photo-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(10,20,50,.82);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;
+}
+.photo-modal-overlay.open{display:flex;}
+.photo-modal{
+  background:var(--white);border-radius:20px;
+  padding:28px;width:min(420px,92vw);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:18px;
+}
+.photo-modal h3{
+  font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;
+  color:var(--navy);display:flex;align-items:center;gap:8px;
+}
+.photo-preview-wrap{
+  width:160px;height:160px;border-radius:50%;
+  border:3px solid var(--gold);overflow:hidden;
+  margin:0 auto;background:#e8edf6;position:relative;
+}
+.photo-preview-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  transform-origin:center;
+}
+.modal-controls{display:flex;flex-direction:column;gap:10px;}
+.slider-row{display:flex;align-items:center;gap:10px;font-size:.83rem;color:var(--navy);}
+.slider-row label{width:80px;flex-shrink:0;font-weight:600;}
+.slider-row input[type=range]{flex:1;accent-color:var(--navy);}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;}
+.btn-modal{
+  padding:9px 18px;border-radius:9px;border:none;cursor:pointer;
+  font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;
+  transition:all .18s;
+}
+.btn-modal.confirm{background:var(--navy);color:#fff;}
+.btn-modal.confirm:hover{background:var(--accent);}
+.btn-modal.cancel{background:var(--light);color:var(--navy);}
+.btn-modal.cancel:hover{background:var(--border);}
+.btn-modal.change{background:var(--gold);color:var(--navy);font-size:.75rem;padding:6px 12px;}
+.photo-saved-badge{
+  display:none;
+  align-items:center;gap:5px;
+  font-size:.72rem;font-weight:600;color:#22a06b;
+  background:#e3fcef;border-radius:6px;padding:3px 9px;margin-top:4px;
+  justify-content:center;
+}
+.photo-saved-badge.show{display:flex;}
+.cover-social{display:flex;gap:9px;justify-content:center;}
+.soc-btn{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(255,255,255,.1);display:grid;place-items:center;
+  color:#fff;font-size:.9rem;text-decoration:none;
+  transition:all .2s;border:1px solid rgba(255,255,255,.15);
+}
+.soc-btn:hover{background:var(--gold);color:var(--navy)}
+.cover-info{flex:1;padding-top:4px;}
+.cover-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(240,192,64,.18);border:1px solid rgba(240,192,64,.35);
+  border-radius:6px;padding:4px 12px;
+  font-size:.73rem;font-weight:600;color:var(--gold);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;
+}
+.cover-name{
+  font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;
+  color:#fff;line-height:1.1;margin-bottom:6px;
+}
+.cover-title{font-size:.95rem;font-weight:500;color:rgba(255,255,255,.7);margin-bottom:18px;}
+.cover-desc{
+  font-size:.88rem;line-height:1.7;color:rgba(255,255,255,.6);
+  max-width:420px;margin-bottom:26px;
+}
+.cover-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:10px;
+  font-family:'Syne',sans-serif;font-size:.83rem;font-weight:700;
+  border:none;cursor:pointer;transition:all .22s;text-decoration:none;
+}
+.btn-primary{background:var(--gold);color:var(--navy);}
+.btn-primary:hover{background:#f5cd55;transform:translateY(-2px);box-shadow:0 6px 20px rgba(240,192,64,.35)}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.cover-bottom{
+  background:rgba(0,0,0,.22);padding:16px 44px;
+  display:flex;gap:32px;flex-wrap:wrap;
+}
+.cover-stat span:first-child{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--gold);}
+.cover-stat span:last-child{font-size:.73rem;color:rgba(255,255,255,.5);display:block;margin-top:1px;}
+
+/* ═══════════════════════
+   PROFILE
+═══════════════════════ */
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.profile-block{background:var(--card);border-radius:var(--radius);padding:20px;border:1px solid var(--border);}
+.profile-block h3{
+  font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--navy);margin-bottom:11px;display:flex;align-items:center;gap:7px;
+}
+.profile-block h3 i{color:var(--accent);}
+.profile-block p{font-size:.855rem;line-height:1.75;color:#3a4a6a;}
+.profile-block.full{grid-column:1/-1;}
+.info-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.info-list li{display:flex;align-items:flex-start;gap:9px;font-size:.85rem;color:var(--text);}
+.info-list li i{color:var(--navy);width:15px;margin-top:2px;flex-shrink:0;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.tag{background:var(--navy);color:#fff;font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:20px;}
+.tag.accent{background:var(--accent);}
+.tag.gold{background:var(--gold);color:var(--navy);}
+
+/* ═══════════════════════
+   EDUCATION
+═══════════════════════ */
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:flex;gap:18px;padding-bottom:24px;position:relative;}
+.tl-item:not(:last-child)::after{
+  content:'';position:absolute;left:17px;top:36px;bottom:0;
+  width:2px;background:var(--border);
+}
+.tl-dot{
+  width:35px;height:35px;border-radius:50%;flex-shrink:0;
+  background:var(--navy);display:grid;place-items:center;
+  color:#fff;font-size:.85rem;position:relative;z-index:1;
+  box-shadow:0 0 0 4px rgba(28,60,108,.12);
+}
+.tl-content{flex:1;padding-top:4px;}
+.tl-content h3{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.tl-meta{font-size:.77rem;color:var(--muted);margin-bottom:7px;display:flex;gap:10px;flex-wrap:wrap;}
+.tl-meta span{display:flex;align-items:center;gap:3px;}
+.tl-content p{font-size:.845rem;line-height:1.65;color:#3a4a6a;}
+
+/* Cert grid */
+.cert-group{margin-bottom:22px;}
+.cert-group-title{
+  font-family:'Syne',sans-serif;font-size:.8rem;font-weight:800;
+  color:var(--navy);text-transform:uppercase;letter-spacing:.07em;
+  margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--border);
+  display:flex;align-items:center;gap:7px;
+}
+.cert-group-title i{color:var(--accent);}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px;}
+.cert-chip{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:9px;padding:9px 12px;
+  display:flex;align-items:center;gap:9px;
+}
+.cert-chip i,.cert-chip .devicon{font-size:1.05rem;color:var(--accent);flex-shrink:0;}
+.cert-chip strong{display:block;font-weight:600;color:var(--navy);font-size:.78rem;}
+.cert-chip span{color:var(--muted);font-size:.71rem;}
+
+/* ═══════════════════════
+   SERVICES
+═══════════════════════ */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;}
+.service-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:22px 18px 18px;
+  display:flex;flex-direction:column;gap:11px;
+  transition:transform .22s,box-shadow .22s;
+}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.service-icon{
+  width:50px;height:50px;border-radius:13px;
+  background:linear-gradient(135deg,var(--navy),var(--accent));
+  display:grid;place-items:center;font-size:1.35rem;color:#fff;
+  box-shadow:0 4px 14px rgba(74,142,255,.3);
+}
+.service-card h3{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;color:var(--navy);}
+.service-card p{font-size:.82rem;line-height:1.65;color:#3a4a6a;flex:1;}
+.read-more-toggle{display:none;}
+.read-more-btn{
+  background:none;border:none;color:var(--accent);
+  font-size:.77rem;font-weight:600;cursor:pointer;
+  text-align:left;padding:0;font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;gap:4px;
+}
+.read-more-btn:hover{color:var(--navy)}
+.extra-text{
+  display:none;font-size:.81rem;line-height:1.65;color:#3a4a6a;
+  border-top:1px solid var(--border);padding-top:9px;margin-top:2px;
+}
+.read-more-toggle:checked ~ .extra-text{display:block}
+.read-more-toggle:checked + .read-more-btn span{display:none}
+.read-more-toggle:checked + .read-more-btn::after{content:'Leer menos ↑'}
+
+/* ═══════════════════════
+   SKILLS
+═══════════════════════ */
+.skills-section{margin-bottom:22px;}
+.skills-section h3{
+  font-family:'Syne',sans-serif;font-size:.88rem;font-weight:800;
+  color:var(--navy);text-transform:uppercase;letter-spacing:.07em;
+  margin-bottom:12px;padding-bottom:7px;border-bottom:2px solid var(--border);
+  display:flex;align-items:center;gap:7px;
+}
+.skills-section h3 i{color:var(--accent);}
+.skills-grid{display:flex;flex-wrap:wrap;gap:9px;}
+.skill-pill{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:9px;padding:8px 13px;
+  display:flex;align-items:center;gap:8px;
+  font-size:.82rem;font-weight:500;color:var(--navy);
+  transition:all .18s;cursor:default;
+}
+.skill-pill:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+.skill-pill i,.skill-pill .devicon{font-size:1.15rem;color:var(--accent);}
+.skill-pill:hover i,.skill-pill:hover .devicon{color:#fff;}
+
+/* ═══════════════════════
+   PROJECTS
+═══════════════════════ */
+.projects-grid{display:flex;flex-direction:column;gap:14px;}
+.project-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px 22px;
+  display:flex;gap:18px;align-items:flex-start;
+  transition:transform .2s,box-shadow .2s;
+}
+.project-card:hover{transform:translateX(4px);box-shadow:var(--shadow)}
+.project-num{
+  font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;
+  color:var(--border);line-height:1;flex-shrink:0;min-width:34px;
+}
+.project-body h3{font-family:'Syne',sans-serif;font-size:.98rem;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.project-body p{font-size:.84rem;line-height:1.65;color:#3a4a6a;margin-bottom:11px;}
+.project-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:11px;}
+.project-tag{
+  background:rgba(28,60,108,.08);color:var(--navy);
+  font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:20px;
+}
+.btn-sm{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 15px;border-radius:8px;font-size:.77rem;font-weight:700;
+  font-family:'Syne',sans-serif;background:var(--navy);color:#fff;
+  text-decoration:none;border:none;cursor:pointer;transition:all .18s;
+}
+.btn-sm:hover{background:var(--accent);transform:translateY(-1px)}
+
+/* ═══════════════════════
+   CONTACT
+═══════════════════════ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
+.contact-block.full{grid-column:1/-1;}
+.contact-block h3{
+  font-family:'Syne',sans-serif;font-size:.88rem;font-weight:800;
+  color:var(--navy);margin-bottom:13px;text-transform:uppercase;letter-spacing:.06em;
+  display:flex;align-items:center;gap:7px;
+}
+.contact-block h3 i{color:var(--accent);}
+.contact-item{
+  display:flex;align-items:center;gap:11px;
+  padding:9px 0;border-bottom:1px solid var(--border);font-size:.85rem;
+}
+.contact-item:last-child{border-bottom:none}
+.contact-item i{
+  width:32px;height:32px;border-radius:8px;background:var(--navy);
+  color:#fff;display:grid;place-items:center;font-size:.85rem;flex-shrink:0;
+}
+.contact-item a{color:var(--accent);text-decoration:none;font-weight:500;}
+.contact-item a:hover{text-decoration:underline}
+.ref-card{padding:11px 0;border-bottom:1px solid var(--border);}
+.ref-card:last-child{border-bottom:none}
+.ref-card strong{font-size:.85rem;color:var(--navy);font-weight:700;}
+.ref-card span{display:block;font-size:.78rem;color:var(--muted);}
+.ref-card a{font-size:.8rem;color:var(--accent);text-decoration:none;}
+
+/* ════════════════════════════════════
+   PRINT – todas las páginas visibles
+════════════════════════════════════ */
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  html,body{background:white!important;padding:0!important;margin:0!important;}
+  .nav-bar,.cover-actions{display:none!important;}
+  .btn-sm{display:none!important;}
+  /* Mostrar TODAS las páginas */
+  .page{
+    display:block!important;
+    box-shadow:none!important;
+    border-radius:0!important;
+    page-break-after:always;
+    break-after:page;
+    overflow:visible!important;
+    min-height:auto!important;
+  }
+  .page:last-of-type{page-break-after:auto;break-after:auto;}
+  /* Evitar cortes dentro de bloques */
+  .tl-item,.project-card,.cert-chip,.service-card,.contact-block,
+  .profile-block,.cert-group,.skills-section{
+    page-break-inside:avoid;break-inside:avoid;
+  }
+  /* Cover ajustes de color */
+  .cover{background:#1c3c6c!important;}
+  .cover-bottom{background:#0f2240!important;}
+  .page-header{background:#1c3c6c!important;}
+}
+
+/* ════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════ */
+
+/* Tablet 640–900 */
+@media(max-width:860px){
+  .page-body{padding:24px 24px 28px;}
+  .page-header{padding:20px 24px 16px;}
+  .cover-top{padding:36px 28px 28px;gap:28px;}
+  .cover-bottom{padding:14px 28px;}
+  .cover-name{font-size:2rem;}
+  .profile-grid{grid-template-columns:1fr;}
+  .profile-block.full{grid-column:1;}
+  .contact-grid{grid-template-columns:1fr;}
+  .contact-block.full{grid-column:1;}
+}
+
+/* Móvil ≤600 */
+@media(max-width:600px){
+  body{padding:10px 8px 50px;}
+  .cover-top{flex-direction:column;align-items:center;text-align:center;padding:32px 20px 24px;}
+  .cover-desc{max-width:100%;}
+  .cover-actions{justify-content:center;}
+  .cover-bottom{padding:12px 20px;gap:18px;}
+  .cover-name{font-size:1.75rem;}
+  .cover-stat span:first-child{font-size:1.2rem;}
+  .page-header{padding:16px 18px 14px;}
+  .page-header h2{font-size:1.15rem;}
+  .page-body{padding:18px 16px 22px;}
+  /* nav tabs scroll horizontal */
+  .nav-bar{flex-direction:column;align-items:stretch;gap:8px;}
+  .nav-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;scrollbar-width:none;}
+  .nav-tabs::-webkit-scrollbar{display:none;}
+  .nav-tab{flex-shrink:0;font-size:.7rem;padding:6px 10px;}
+  .nav-right{justify-content:space-between;}
+  .cert-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr;}
+  .project-card{flex-direction:column;gap:10px;}
+  .project-num{font-size:1.4rem;}
+  .photo-frame{width:120px;height:120px;}
+}
+</style>
+</head>
+<body>
+<div id="scrollProgress"></div>
+<div class="book-wrapper">
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="goTo(0)">🏠 Inicio</button>
+      <button class="nav-tab" onclick="goTo(1)">Perfil</button>
+      <button class="nav-tab" onclick="goTo(2)">Educación</button>
+      <button class="nav-tab" onclick="goTo(3)">Servicios</button>
+      <button class="nav-tab" onclick="goTo(4)">Habilidades</button>
+      <button class="nav-tab" onclick="goTo(5)">Proyectos</button>
+      <button class="nav-tab" onclick="goTo(6)">Contacto</button>
+      <button class="nav-tab" onclick="goTo(7)">⚙️ Dev</button>
+    </div>
+    <div class="nav-right">
+      <span class="page-counter" id="pageCounter">1 / 8</span>
+      <button class="lang-toggle" onclick="toggleLang()" id="langBtn" title="Cambiar idioma"><i class="fa-solid fa-language"></i> <span id="langLabel">EN</span></button>
+      <button class="dark-toggle" onclick="toggleDark()" id="darkBtn" title="Modo oscuro"><i class="fa-solid fa-moon" id="darkIcon"></i></button>
+      <button class="export-btn" onclick="exportConfig()" title="Exportar configuración"><i class="fa-solid fa-file-arrow-down"></i> JSON</button>
+      <div class="nav-arrows">
+        <button class="nav-btn" onclick="prevPage()" title="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="nav-btn" onclick="nextPage()" title="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE 0 · PORTADA ═══ -->
+  <div class="page active" id="page-0">
+    <div class="cover">
+      <div class="cover-top">
+        <div class="cover-photo-col">
+          <div class="photo-frame" onclick="openPhotoModal()">
+            <img id="profileImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='150' height='150' fill='%231c3c6c' rx='75'/%3E%3Ctext x='75' y='90' font-size='60' text-anchor='middle' fill='%234a8eff'%3E%F0%9F%91%A4%3C/text%3E%3C/svg%3E" alt="Foto"/>
+            <div class="upload-hint"><i class="fa-solid fa-camera" style="font-size:1.2rem"></i><span>Editar foto</span></div>
+          </div>
+          <div class="photo-saved-badge" id="savedBadge"><i class="fa-solid fa-circle-check"></i> Foto guardada</div>
+          <input type="file" id="photoInput" accept="image/*" onchange="loadPhotoToModal(event)"/>
+          <div class="cover-social">
+            <a href="https://www.linkedin.com/in/alexander-cano-8b76a6414/" target="_blank" class="soc-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/DrummerCG" target="_blank" class="soc-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:creadormultiple@gmail.com" class="soc-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/573104454288" target="_blank" class="soc-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="cover-info">
+          <div class="cover-badge"><i class="fa-solid fa-circle-check"></i> Disponible para proyectos</div>
+          <h1 class="cover-name">Alexander<br/>Cano Gonzalez</h1>
+          <p class="cover-title" data-i18n="coverTitle">Analista y Desarrollador de Software · QA Automation · UI/UX</p>
+          <p class="cover-desc" data-i18n="coverDesc">Tecnólogo SENA con experiencia práctica en desarrollo frontend, automatización de pruebas y administración de plataformas web. Apasionado por productos digitales que combinan funcionalidad, diseño e innovación.</p>
+          <div class="cover-actions">
+            <button class="btn btn-primary" onclick="printCV()"><i class="fa-solid fa-download"></i> <span data-i18n="coverBtnCV">Descargar CV</span></button>
+            <button class="btn btn-outline" onclick="goTo(6)"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="coverBtnContact">Contacto</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="cover-bottom">
+        <div class="cover-stat"><span>+20</span><span data-i18n="stat1">Certificaciones</span></div>
+        <div class="cover-stat"><span>6 m</span><span data-i18n="stat2">Exp. práctica</span></div>
+        <div class="cover-stat"><span>5+</span><span data-i18n="stat3">Tecnologías</span></div>
+        <div class="cover-stat"><span>2026</span><span data-i18n="stat4">Tecnólogo SENA</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE 1 · PERFIL ═══ -->
+  <div class="page" id="page-1">
+    <div class="page-header">
+      <div class="page-icon"><i class="fa-solid fa-user"></i></div>
+      <div><h2>Perfil Profesional</h2><p>Quién soy y qué me define como profesional</p></div>
+    </div>
+    <div class="page-body">
+      <div class="profile-grid">
+        <div class="profile-block full">
+          <h3><i class="fa-solid fa-id-card-clip"></i> Resumen</h3>
+          <p>Tecnólogo en Análisis y Desarrollo de Software del SENA, con experiencia práctica en desarrollo frontend, automatización de pruebas, administración de plataformas web educativas e <strong>instrucción técnica</strong>. Cuento con conocimientos en HTML, CSS, JavaScript, React y Node.js, además de experiencia en herramientas CMS como WordPress, Elementor y Moodle.</p>
+          <br/><p>He editado e impartido el curso completo de <strong>Fundamentos de React</strong> en IzyAcademy, lo que me permitió consolidar habilidades de comunicación técnica, síntesis pedagógica y liderazgo en entornos de formación profesional. Participé también en diseño UI/UX con Figma y Adobe XD, y en automatización de pruebas con Python y Selenium WebDriver.</p>
+          <br/><p>Me defino como <strong>Frontend Developer Junior</strong> con experiencia en <strong>QA Automation</strong>, administración de plataformas web y <strong>docencia técnica en React</strong>.</p>
+        </div>
+        <div class="profile-block">
+          <h3><i class="fa-solid fa-circle-info"></i> Datos personales</h3>
+          <ul class="info-list">
+            <li><i class="fa-solid fa-location-dot"></i> Itagüí, Antioquia · Calle 83 #58-450</li>
+            <li><i class="fa-solid fa-phone"></i> 310 445 4288</li>
+            <li><i class="fa-solid fa-envelope"></i> creadormultiple@gmail.com</li>
+            <li><i class="fa-solid fa-id-card"></i> CC: 1.036.616.232</li>
+          </ul>
+        </div>
+        <div class="profile-block">
+          <h3><i class="fa-solid fa-briefcase"></i> Experiencia</h3>
+          <ul class="info-list">
+            <li><i class="fa-solid fa-chalkboard-user" style="color:var(--gold)"></i>
+              <span><strong>Instructor – Curso Fundamentos de React</strong><br/>
+              IzyAcademy · Q-Vision Technologies<br/>
+              Diseño curricular · Clases grabadas · Mentoría · Proyecto final guiado<br/>
+              <span style="color:var(--muted);font-size:.76rem">Docencia técnica · 2025</span></span>
+            </li>
+            <li><i class="fa-solid fa-building"></i>
+              <span><strong>Q-Vision Technologies (IzyAcademy)</strong><br/>
+              Soporte Frontend · Documentación · QA Funcional · Plataformas web educativas<br/>
+              <span style="color:var(--muted);font-size:.76rem">Práctica profesional · 6 meses</span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="profile-block full">
+          <h3><i class="fa-solid fa-star"></i> Rasgos clave</h3>
+          <div class="tag-cloud">
+            <span class="tag">Proactivo</span><span class="tag accent">Orientado al servicio</span>
+            <span class="tag">Aprendizaje continuo</span><span class="tag accent">Trabajo colaborativo</span>
+            <span class="tag">SCRUM</span><span class="tag gold">Visión integral</span>
+            <span class="tag">Responsable</span><span class="tag accent">Adaptable</span>
+            <span class="tag gold">Docencia técnica</span><span class="tag accent">Comunicación clara</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE 2 · EDUCACIÓN ═══ -->
+  <div class="page" id="page-2">
+    <div class="page-header">
+      <div class="page-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div><h2>Educación &amp; Certificaciones</h2><p>Formación académica y aprendizaje continuo</p></div>
+    </div>
+    <div class="page-body">
+      <p class="section-title">Títulos Académicos</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"><i class="fa-solid fa-school"></i></div>
+          <div class="tl-content">
+            <h3>Bachiller Académico</h3>
+            <div class="tl-meta"><span><i class="fa-solid fa-building-columns"></i> Liceo Enrique Vélez Escobar</span><span><i class="fa-regular fa-calendar"></i> 2006</span></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"><i class="fa-solid fa-computer"></i></div>
+          <div class="tl-content">
+            <h3>Técnico en Mantenimiento y Reparación de Equipos de Cómputo</h3>
+            <div class="tl-meta"><span><i class="fa-solid fa-building-columns"></i> CEFIT / Convenio SENA</span><span><i class="fa-regular fa-calendar"></i> 2007</span></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"><i class="fa-solid fa-code"></i></div>
+          <div class="tl-content">
+            <h3>Tecnólogo en Análisis y Desarrollo de Software</h3>
+            <div class="tl-meta"><span><i class="fa-solid fa-building-columns"></i> SENA – Centro de Comercio y Servicios, Regional Tolima</span><span><i class="fa-regular fa-calendar"></i> Mayo 2026</span></div>
+            <p>Reconocimiento a la Excelencia por sentido de pertenencia, liderazgo y rendimiento académico. SENA Regional Tolima, diciembre 2024.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="section-title" style="margin-top:6px">Certificaciones por institución</p>
+
+      <!-- IzyAcademy -->
+      <div class="cert-group">
+        <div class="cert-group-title"><i class="fa-solid fa-flask"></i> IzyAcademy / Q-Vision Technologies</div>
+        <div class="cert-grid">
+          <div class="cert-chip"><i class="devicon-selenium-original colored"></i><div><strong>Selenium con Screenplay</strong><span>Dic 2025</span></div></div>
+          <div class="cert-chip"><i class="devicon-selenium-original colored"></i><div><strong>Selenium WebDriver + POM</strong><span>Dic 2025</span></div></div>
+          <div class="cert-chip"><i class="devicon-python-plain colored"></i><div><strong>Fundamentos Python</strong><span>Dic 2025</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-robot"></i><div><strong>Prompting ChatGPT</strong><span>Dic 2025</span></div></div>
+          <div class="cert-chip"><i class="devicon-java-plain colored"></i><div><strong>Fundamentos Java</strong><span>Ene 2026</span></div></div>
+          <div class="cert-chip"><i class="devicon-mongodb-plain colored"></i><div><strong>Fundamentos MongoDB</strong><span>Feb 2026</span></div></div>
+          <div class="cert-chip"><i class="devicon-mysql-plain colored"></i><div><strong>Fundamentos SQL</strong><span>Abr 2026</span></div></div>
+          <div class="cert-chip"><i class="devicon-java-plain colored"></i><div><strong>API REST con Java</strong><span>Abr 2026</span></div></div>
+          <div class="cert-chip"><i class="devicon-amazonwebservices-plain colored"></i><div><strong>Fundamentos AWS</strong><span>Abr 2026</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-diagram-project"></i><div><strong>Patrones de Diseño</strong><span>Abr 2026</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-list-check"></i><div><strong>Ingeniería de Requerimientos</strong><span>Abr 2026</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-gauge-high"></i><div><strong>Pruebas de Performance</strong><span>Abr 2026</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-shield-halved"></i><div><strong>Principios de Ciberseguridad</strong><span>Abr 2026</span></div></div>
+          <div class="cert-chip"><i class="devicon-html5-plain colored"></i><div><strong>Diseño Web HTML5 y CSS3</strong><span>Abr 2026</span></div></div>
+        </div>
+      </div>
+
+      <!-- SENA -->
+      <div class="cert-group">
+        <div class="cert-group-title"><i class="fa-solid fa-award"></i> SENA</div>
+        <div class="cert-grid">
+          <div class="cert-chip"><i class="fa-solid fa-robot"></i><div><strong>IA en Presentaciones Impactantes</strong><span>Sep 2024 · 20 h</span></div></div>
+          <div class="cert-chip"><i class="fa-brands fa-adobe"></i><div><strong>Diseño de Imagen Corporativa</strong><span>Dic 2023 · 40 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-share-nodes"></i><div><strong>Contenido Digital Redes Sociales</strong><span>Oct 2024 · 48 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-comments"></i><div><strong>Habilidades Digitales Comunicación</strong><span>Dic 2023 · 48 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-lock"></i><div><strong>Habilidades Digitales Seguridad</strong><span>Dic 2023 · 48 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-chart-bar"></i><div><strong>Razonamiento Cuantitativo Saber Pro</strong><span>Nov 2023 · 40 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-book-open"></i><div><strong>Lectura Crítica</strong><span>Dic 2023 · 40 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-handshake-angle"></i><div><strong>Comportamiento Emprendedor</strong><span>Abr 2025 · 48 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-users"></i><div><strong>Control Social y Participación</strong><span>Oct 2024 · 48 h</span></div></div>
+        </div>
+      </div>
+
+      <!-- MediaPro -->
+      <div class="cert-group">
+        <div class="cert-group-title"><i class="fa-brands fa-adobe"></i> MediaPro / Adobe ACP</div>
+        <div class="cert-grid">
+          <div class="cert-chip"><i class="devicon-illustrator-plain colored"></i><div><strong>Adobe Illustrator ACP</strong><span>Oct 2024 · 6 h</span></div></div>
+          <div class="cert-chip"><i class="devicon-photoshop-plain colored"></i><div><strong>Adobe Photoshop ACP</strong><span>Jul 2024 · 7 h</span></div></div>
+          <div class="cert-chip"><i class="fa-brands fa-adobe" style="color:#ff0000"></i><div><strong>Adobe InDesign CC</strong><span>Jun 2025 · 3 h</span></div></div>
+          <div class="cert-chip"><i class="devicon-xd-plain colored"></i><div><strong>Diseño UI/UX con Adobe XD</strong><span>Jun 2025 · 2 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-film"></i><div><strong>Integración Audiovisual Adobe</strong><span>Jun 2025 · 2 h</span></div></div>
+        </div>
+      </div>
+
+      <!-- Platzi -->
+      <div class="cert-group">
+        <div class="cert-group-title"><i class="fa-solid fa-graduation-cap"></i> Platzi</div>
+        <div class="cert-grid">
+          <div class="cert-chip"><i class="fa-solid fa-desktop"></i><div><strong>Computación Básica</strong><span>Ene 2023 · 14 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-brain"></i><div><strong>Pensamiento Lógico: Algoritmos</strong><span>Ene 2023 · 12 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-code-branch"></i><div><strong>Funciones y Estructuras de Control</strong><span>Ene 2023 · 12 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-language"></i><div><strong>Lenguajes de Programación</strong><span>Ene 2023 · 12 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-clock"></i><div><strong>Gestión Efectiva del Tiempo</strong><span>Ene 2023 · 12 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-book"></i><div><strong>Técnicas Efectivas de Estudio</strong><span>Feb 2023 · 10 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-wifi"></i><div><strong>Estrategias para Aprender en Línea</strong><span>Ene 2023 · 8 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-calendar-check"></i><div><strong>Estrategias de Productividad</strong><span>Ene 2023 · 8 h</span></div></div>
+        </div>
+      </div>
+
+      <!-- Otros -->
+      <div class="cert-group">
+        <div class="cert-group-title"><i class="fa-solid fa-certificate"></i> Otros</div>
+        <div class="cert-grid">
+          <div class="cert-chip"><i class="fa-solid fa-arrows-spin"></i><div><strong>Scrum Fundamentals (SFC™)</strong><span>SCRUMstudy · Sep 2025</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-chart-line"></i><div><strong>Power BI</strong><span>Aportes en Línea · Feb 2026 · 8 h</span></div></div>
+          <div class="cert-chip"><i class="fa-solid fa-table"></i><div><strong>Excel Intermedio</strong><span>Aportes en Línea · Feb 2026 · 16 h</span></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ PAGE 3 · SERVICIOS ═══ -->
+  <div class="page" id="page-3">
+    <div class="page-header">
+      <div class="page-icon"><i class="fa-solid fa-briefcase"></i></div>
+      <div><h2>Mis Servicios</h2><p>Lo que puedo hacer en proyectos o empresa</p></div>
+    </div>
+    <div class="page-body">
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3>Desarrollo Frontend</h3>
+          <p>Interfaces web modernas, responsivas y accesibles con HTML5, CSS3, JavaScript y React. Integración con APIs REST.</p>
+          <input type="checkbox" class="read-more-toggle" id="s1"/>
+          <label class="read-more-btn" for="s1"><span>Leer más ↓</span></label>
+          <div class="extra-text">Componentes reutilizables, metodología BEM, experiencia con Elementor/WordPress y Moodle para plataformas CMS y educativas.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+          <h3>QA &amp; Automatización</h3>
+          <p>Pruebas funcionales y de rendimiento. Automatización con Selenium WebDriver, Screenplay y Python bajo el patrón POM.</p>
+          <input type="checkbox" class="read-more-toggle" id="s2"/>
+          <label class="read-more-btn" for="s2"><span>Leer más ↓</span></label>
+          <div class="extra-text">Ingeniería de Requerimientos para mapear escenarios de prueba. Pruebas no funcionales de performance. Documentación técnica de casos de prueba.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <h3>SEO &amp; Analytics</h3>
+          <p>Optimización on-page para motores de búsqueda. Análisis de tráfico con Google Analytics y visualización en Power BI.</p>
+          <input type="checkbox" class="read-more-toggle" id="s3"/>
+          <label class="read-more-btn" for="s3"><span>Leer más ↓</span></label>
+          <div class="extra-text">Configuración de etiquetas, seguimiento de eventos y creación de contenido digital orientado a métricas para redes sociales.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+          <h3>Diseño Corporativo</h3>
+          <p>Identidad visual, materiales gráficos y piezas para redes sociales con Adobe Illustrator, Photoshop, InDesign y Figma.</p>
+          <input type="checkbox" class="read-more-toggle" id="s4"/>
+          <label class="read-more-btn" for="s4"><span>Leer más ↓</span></label>
+          <div class="extra-text">Logotipos, manuales de marca, presentaciones corporativas e infografías. Certificado Adobe ACP. Edición audiovisual con integración Adobe.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-sitemap"></i></div>
+          <h3>Administración de Plataformas</h3>
+          <p>Gestión de plataformas educativas Moodle y sitios WordPress/Elementor. Soporte técnico, documentación y capacitación.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-database"></i></div>
+          <h3>Backend &amp; Bases de Datos</h3>
+          <p>Desarrollo con Node.js y Java (API REST). Gestión de bases de datos SQL y MongoDB. Fundamentos de AWS para la nube.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE 4 · HABILIDADES ═══ -->
+  <div class="page" id="page-4">
+    <div class="page-header">
+      <div class="page-icon"><i class="fa-solid fa-layer-group"></i></div>
+      <div><h2>Habilidades &amp; Tecnologías</h2><p>Stack técnico organizado por área</p></div>
+    </div>
+    <div class="page-body">
+      <div class="skills-section">
+        <h3><i class="fa-solid fa-display"></i> Frontend</h3>
+        <div class="skills-grid">
+          <div class="skill-pill"><i class="devicon-html5-plain colored"></i> HTML5</div>
+          <div class="skill-pill"><i class="devicon-css3-plain colored"></i> CSS3</div>
+          <div class="skill-pill"><i class="devicon-javascript-plain colored"></i> JavaScript</div>
+          <div class="skill-pill"><i class="devicon-react-original colored"></i> React</div>
+          <div class="skill-pill"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</div>
+          <div class="skill-pill"><i class="devicon-jquery-plain colored"></i> jQuery</div>
+          <div class="skill-pill"><i class="devicon-angularjs-plain colored"></i> Angular</div>
+          <div class="skill-pill"><i class="devicon-wordpress-plain colored"></i> WordPress</div>
+          <div class="skill-pill"><i class="fa-solid fa-cube" style="color:#e84d0e"></i> Elementor</div>
+        </div>
+      </div>
+      <div class="skills-section">
+        <h3><i class="fa-solid fa-server"></i> Backend &amp; QA Automation</h3>
+        <div class="skills-grid">
+          <div class="skill-pill"><i class="devicon-nodejs-plain colored"></i> Node.js</div>
+          <div class="skill-pill"><i class="devicon-python-plain colored"></i> Python</div>
+          <div class="skill-pill"><i class="devicon-java-plain colored"></i> Java</div>
+          <div class="skill-pill"><i class="devicon-php-plain colored"></i> PHP</div>
+          <div class="skill-pill"><i class="devicon-typescript-plain colored"></i> TypeScript</div>
+          <div class="skill-pill"><i class="devicon-selenium-original colored"></i> Selenium WebDriver</div>
+          <div class="skill-pill"><i class="fa-solid fa-vial"></i> Pruebas funcionales</div>
+          <div class="skill-pill"><i class="fa-solid fa-gauge-high"></i> Pruebas de rendimiento</div>
+        </div>
+      </div>
+      <div class="skills-section">
+        <h3><i class="fa-solid fa-database"></i> Bases de Datos &amp; Cloud</h3>
+        <div class="skills-grid">
+          <div class="skill-pill"><i class="devicon-mysql-plain colored"></i> SQL / MySQL</div>
+          <div class="skill-pill"><i class="devicon-mongodb-plain colored"></i> MongoDB</div>
+          <div class="skill-pill"><i class="devicon-amazonwebservices-plain colored"></i> AWS</div>
+          <div class="skill-pill"><i class="devicon-github-original"></i> GitHub</div>
+        </div>
+      </div>
+      <div class="skills-section">
+        <h3><i class="fa-solid fa-pen-ruler"></i> UI/UX &amp; Diseño</h3>
+        <div class="skills-grid">
+          <div class="skill-pill"><i class="devicon-figma-plain colored"></i> Figma</div>
+          <div class="skill-pill"><i class="devicon-xd-plain colored"></i> Adobe XD</div>
+          <div class="skill-pill"><i class="devicon-illustrator-plain colored"></i> Illustrator</div>
+          <div class="skill-pill"><i class="devicon-photoshop-plain colored"></i> Photoshop</div>
+          <div class="skill-pill"><i class="fa-brands fa-adobe" style="color:#ff0000"></i> InDesign</div>
+          <div class="skill-pill"><i class="devicon-moodle-plain colored"></i> Moodle</div>
+        </div>
+      </div>
+      <div class="skills-section">
+        <h3><i class="fa-solid fa-chart-bar"></i> Metodologías &amp; Herramientas</h3>
+        <div class="skills-grid">
+          <div class="skill-pill"><i class="fa-solid fa-arrows-spin"></i> SCRUM</div>
+          <div class="skill-pill"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO</div>
+          <div class="skill-pill"><i class="fa-brands fa-google" style="color:#4285f4"></i> Google Analytics</div>
+          <div class="skill-pill"><i class="fa-solid fa-chart-line" style="color:#f2c811"></i> Power BI</div>
+          <div class="skill-pill"><i class="fa-solid fa-table" style="color:#217346"></i> Excel Intermedio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE 5 · PROYECTOS ═══ -->
+  <div class="page" id="page-5">
+    <div class="page-header">
+      <div class="page-icon"><i class="fa-solid fa-rocket"></i></div>
+      <div><h2>Proyectos</h2><p>6 repositorios reales + 1 curso impartido en GitHub</p></div>
+    </div>
+    <div class="page-body">
+      <div class="projects-grid">
+        <div class="project-card" style="border-left:3px solid var(--gold);">
+          <div class="project-num" style="color:var(--gold);">★</div>
+          <div class="project-body">
+            <h3>Instructor – Curso Fundamentos de React · IzyAcademy</h3>
+            <p>Edité e impartí el curso completo de Fundamentos de React para IzyAcademy (Q-Vision Technologies). Cubrí hooks, componentes, props, estado, eventos, rutas y conexiones con APIs. El repositorio base del curso (<em>IzyplusHD</em>) fue construido en paralelo como material práctico para los estudiantes.</p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Vite</span>
+              <span class="project-tag">Docencia técnica</span>
+              <span class="project-tag">Diseño curricular</span>
+              <span class="project-tag">Mentoría</span>
+            </div>
+            <a href="https://github.com/DrummerCG/IzyplusHD---Curso-Fundamentos-de-React." target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Ver repositorio del curso</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">01</div>
+          <div class="project-body">
+            <h3>Front-End – Decoraciones Ortiz (SENA)</h3>
+            <p>Interfaz de usuario para el aplicativo de ventas de la empresa Decoraciones Ortiz, desarrollada como proyecto de grado SENA. Construida en React con componentes modulares y flujo de gestión de ventas.</p>
+            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">JavaScript</span><span class="project-tag">CSS3</span></div>
+            <a href="https://github.com/DrummerCG/Front-Decoraciones" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">02</div>
+          <div class="project-body">
+            <h3>Back-End – Decoraciones Ortiz (SENA)</h3>
+            <p>API backend para el aplicativo de ventas de Decoraciones Ortiz. Desarrollado en Node.js con gestión de productos, clientes y pedidos para el proyecto de grado SENA.</p>
+            <div class="project-tags"><span class="project-tag">Node.js</span><span class="project-tag">REST API</span><span class="project-tag">JavaScript</span></div>
+            <a href="https://github.com/DrummerCG/Back-Decoraciones" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">03</div>
+          <div class="project-body">
+            <h3>IzyAcademy – Frontend React</h3>
+            <p>Repositorio oficial del frontend de la plataforma IzyAcademy para formación profesional. Aplicación web escrita en React con rutas, componentes dinámicos y consumo de APIs.</p>
+            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">JavaScript</span><span class="project-tag">Frontend</span></div>
+            <a href="https://github.com/DrummerCG/Izzy-Front" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">04</div>
+          <div class="project-body">
+            <h3>IzyAcademy – Backend Java / Spring Boot</h3>
+            <p>Backend RESTful para IzyAcademy. Gestiona usuarios con registro y autenticación segura de contraseñas usando Spring Security. Base de datos MariaDB vía JPA/Hibernate, construido con Maven y Java 21.</p>
+            <div class="project-tags"><span class="project-tag">Java 21</span><span class="project-tag">Spring Boot</span><span class="project-tag">Spring Security</span><span class="project-tag">MariaDB</span><span class="project-tag">Maven</span></div>
+            <a href="https://github.com/DrummerCG/Izy-Backend" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">05</div>
+          <div class="project-body">
+            <h3>AutoRegistro – Suite de Automatización QA</h3>
+            <p>Suite completa de automatización en Python con Selenium WebDriver para gestionar procesos administrativos en Moodle y WordPress de IzyAcademy: registro de usuarios, asignación de cursos y tareas complejas sin errores.</p>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Selenium</span><span class="project-tag">Moodle</span><span class="project-tag">WordPress</span></div>
+            <a href="https://github.com/DrummerCG/AutoRegistro" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">06</div>
+          <div class="project-body">
+            <h3>IzyplusHD – Fundamentos de React</h3>
+            <p>Aplicación de práctica para el curso Fundamentos de React de IzyAcademy construida con Vite. Incluye componentes reutilizables, manejo de eventos, props y reglas de estilo simples como base de aprendizaje.</p>
+            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Vite</span><span class="project-tag">Props</span><span class="project-tag">Componentes</span></div>
+            <a href="https://github.com/DrummerCG/IzyplusHD---Curso-Fundamentos-de-React." target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE 6 · CONTACTO ═══ -->
+  <div class="page" id="page-6">
+    <div class="page-header">
+      <div class="page-icon"><i class="fa-solid fa-address-book"></i></div>
+      <div><h2 data-i18n="contactTitle">Contacto &amp; Referencias</h2><p data-i18n="contactSub">¡Hablemos de próximos proyectos!</p></div>
+    </div>
+    <div class="page-body">
+      <div class="contact-grid">
+        <div class="contact-block reveal">
+          <h3><i class="fa-solid fa-phone"></i> <span data-i18n="contactInfo">Contacto</span></h3>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>310 445 4288</span></div>
+          <div class="contact-item"><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/573104454288" target="_blank">WhatsApp directo</a></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:creadormultiple@gmail.com">creadormultiple@gmail.com</a></div>
+          <div class="contact-item"><i class="fa-brands fa-linkedin-in"></i><a href="https://www.linkedin.com/in/alexander-cano-8b76a6414/" target="_blank">LinkedIn – Alexander Cano</a></div>
+          <div class="contact-item"><i class="fa-brands fa-github"></i><a href="https://github.com/DrummerCG" target="_blank">github.com/DrummerCG</a></div>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>Itagüí, Antioquia, Colombia</span></div>
+        </div>
+        <div class="contact-block reveal">
+          <h3><i class="fa-solid fa-id-card"></i> <span data-i18n="personalData">Datos personales</span></h3>
+          <div class="contact-item"><i class="fa-solid fa-user"></i><span>Alexander Cano González</span></div>
+          <div class="contact-item"><i class="fa-solid fa-fingerprint"></i><span>CC: 1.036.616.232</span></div>
+          <div class="contact-item"><i class="fa-solid fa-map-pin"></i><span>Calle 83 #58-450, Itagüí</span></div>
+        </div>
+
+        <!-- ── FORMULARIO FUNCIONAL ── -->
+        <div class="contact-block full reveal">
+          <h3><i class="fa-solid fa-paper-plane"></i> <span data-i18n="sendMessage">Enviar mensaje</span></h3>
+          <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="cf_name" data-i18n="formName">Nombre completo</label>
+                <input type="text" id="cf_name" name="name" required placeholder="Tu nombre" autocomplete="name"/>
+              </div>
+              <div class="form-field">
+                <label for="cf_email" data-i18n="formEmail">Correo electrónico</label>
+                <input type="email" id="cf_email" name="email" required placeholder="tu@email.com" autocomplete="email"/>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="cf_subject" data-i18n="formSubject">Asunto</label>
+              <input type="text" id="cf_subject" name="subject" required placeholder="¿En qué puedo ayudarte?"/>
+            </div>
+            <div class="form-field">
+              <label for="cf_message" data-i18n="formMessage">Mensaje</label>
+              <textarea id="cf_message" name="message" required rows="5" placeholder="Describe tu proyecto o consulta..."></textarea>
+            </div>
+            <div class="form-status" id="formStatus"></div>
+            <button type="submit" class="btn btn-primary" style="width:fit-content" id="formSubmitBtn">
+              <i class="fa-solid fa-paper-plane"></i> <span data-i18n="formSend">Enviar mensaje</span>
+            </button>
+            <p style="font-size:.72rem;color:var(--muted);margin-top:4px;" data-i18n="formNote">Formulario enviado vía Formspree · Sin backend requerido</p>
+          </form>
+        </div>
+
+        <div class="contact-block reveal">
+          <h3><i class="fa-solid fa-handshake"></i> <span data-i18n="labRefs">Referencias Laborales</span></h3>
+          <div class="ref-card">
+            <strong>Ricardo Alfonso Forero Bahamón</strong>
+            <span>Ingeniero en Sistemas e Informática</span>
+            <a href="tel:3144894640"><i class="fa-solid fa-phone" style="font-size:.73rem"></i> 314 489 4640</a>
+          </div>
+          <div class="ref-card">
+            <strong>John Jairo Ortiz Restrepo</strong>
+            <span>Analista de Software</span>
+            <a href="tel:3045263657"><i class="fa-solid fa-phone" style="font-size:.73rem"></i> 304 526 3657</a>
+          </div>
+          <div class="ref-card">
+            <strong>Santiago Upegui Quiroz</strong>
+            <span>Ingeniero en Sistemas e Informática</span>
+            <a href="tel:3002312301"><i class="fa-solid fa-phone" style="font-size:.73rem"></i> 300 231 2301</a>
+          </div>
+        </div>
+        <div class="contact-block reveal">
+          <h3><i class="fa-solid fa-heart"></i> <span data-i18n="personalRef">Referencia Personal</span></h3>
+          <div class="ref-card">
+            <strong>Jenny Marcela Cano González</strong>
+            <span>Hermana</span>
+            <a href="tel:3023481213"><i class="fa-solid fa-phone" style="font-size:.73rem"></i> 302 348 1213</a>
+          </div>
+          <div style="margin-top:18px;padding:16px;background:linear-gradient(135deg,var(--navy),#234b8a);border-radius:12px;text-align:center;">
+            <p style="color:rgba(255,255,255,.7);font-size:.78rem;margin-bottom:10px;" data-i18n="ctaText">¿Listo para trabajar juntos?</p>
+            <a href="mailto:creadormultiple@gmail.com" class="btn btn-primary" style="display:inline-flex;font-size:.8rem;">
+              <i class="fa-solid fa-envelope"></i> creadormultiple@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ═══ PAGE 7 · CÓMO CONSTRUÍ ESTE CV ═══ -->
+  <div class="page" id="page-7">
+    <div class="page-header">
+      <div class="page-icon"><i class="fa-solid fa-code"></i></div>
+      <div><h2>Cómo construí este CV</h2><p>Decisiones técnicas, arquitectura y lecciones aprendidas</p></div>
+    </div>
+    <div class="page-body">
+
+      <!-- Tecnologías -->
+      <p class="section-title"><i class="fa-solid fa-layer-group" style="color:var(--accent);margin-right:6px"></i>Tecnologías utilizadas</p>
+      <div class="profile-grid" style="margin-bottom:24px">
+        <div class="profile-block">
+          <h3><i class="fa-solid fa-file-code"></i> Core — sin frameworks</h3>
+          <p>El portafolio está construido en <strong>HTML5, CSS3 vanilla y JavaScript puro</strong> (ES6+), sin ningún framework ni bundler. La decisión fue intencional: demostrar dominio de los fundamentos del frontend, reducir dependencias y producir un único archivo <code>.html</code> autocontenido que cualquier persona puede abrir, compartir y publicar sin instalar nada.</p>
+        </div>
+        <div class="profile-block">
+          <h3><i class="fa-solid fa-satellite-dish"></i> CDNs externos</h3>
+          <ul class="info-list" style="margin-top:4px">
+            <li><i class="fa-brands fa-font-awesome"></i> <strong>Font Awesome 6.5</strong> — iconografía general</li>
+            <li><i class="fa-solid fa-cube"></i> <strong>Devicons 2.15</strong> — logos de tecnologías</li>
+            <li><i class="fa-brands fa-google"></i> <strong>Google Fonts</strong> — tipografías Syne + DM Sans</li>
+          </ul>
+        </div>
+        <div class="profile-block">
+          <h3><i class="fa-solid fa-floppy-disk"></i> Persistencia</h3>
+          <p><strong>localStorage</strong> guarda la foto de perfil junto con su zoom y posición exacta (base64 + transform). La próxima vez que se abre el archivo en el mismo navegador, la foto restaura automáticamente el estado que tenía.</p>
+        </div>
+        <div class="profile-block">
+          <h3><i class="fa-solid fa-paintbrush"></i> Diseño visual</h3>
+          <p>Sistema de <strong>CSS Custom Properties</strong> (tokens de diseño) para paleta, sombras y radios. Tipografía dual: <em>Syne</em> para títulos con carácter y <em>DM Sans</em> para cuerpo legible. Color base <code>#1c3c6c</code> con acento azul y oro para jerarquía visual.</p>
+        </div>
+      </div>
+
+      <!-- Arquitectura -->
+      <p class="section-title"><i class="fa-solid fa-sitemap" style="color:var(--accent);margin-right:6px"></i>Arquitectura del archivo</p>
+      <div class="profile-block full" style="margin-bottom:24px">
+        <h3><i class="fa-solid fa-diagram-project"></i> Single-file SPA simulada</h3>
+        <p>El archivo funciona como una <strong>Single Page Application sin router</strong>. Cada sección es un <code>&lt;div class="page"&gt;</code> con <code>display:none</code> por defecto. La función <code>goTo(n)</code> activa una página ocultando las demás con <code>classList.toggle('active')</code>. La navegación responde a clics en pestañas, flechas de teclado (←→) y botones prev/next. La animación de transición es un <code>@keyframes fadeIn</code> CSS aplicado al activarse la clase.</p>
+        <div class="tag-cloud" style="margin-top:12px">
+          <span class="tag">8 páginas</span>
+          <span class="tag accent">1 archivo HTML</span>
+          <span class="tag">0 dependencias locales</span>
+          <span class="tag gold">~1200 líneas</span>
+          <span class="tag">CSS tokens</span>
+          <span class="tag accent">localStorage</span>
+        </div>
+      </div>
+
+      <!-- Problemas resueltos -->
+      <p class="section-title"><i class="fa-solid fa-wrench" style="color:var(--accent);margin-right:6px"></i>Problemas resueltos</p>
+      <div class="timeline" style="margin-bottom:24px">
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#e05252"><i class="fa-solid fa-bug"></i></div>
+          <div class="tl-content">
+            <h3>PDF solo mostraba la página activa</h3>
+            <p>El CSS ocultaba las páginas inactivas con <code>display:none</code>, lo que hacía que al imprimir solo apareciera la visible. Solución: interceptar los eventos <code>beforeprint</code> y <code>afterprint</code> del navegador para mostrar todas las páginas antes de imprimir y restaurar el estado posterior. El botón "Descargar CV" usa la misma lógica vía <code>window.print()</code>.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#e09020"><i class="fa-solid fa-image"></i></div>
+          <div class="tl-content">
+            <h3>Foto con tamaño fijo y sin persistencia</h3>
+            <p>La primera versión usaba <code>FileReader</code> directamente sobre <code>&lt;img&gt;</code>, lo que perdía la foto al recargar y no permitía ajustar el encuadre. Se implementó un <strong>modal editor</strong> con tres sliders (zoom 50–250%, posición X/Y ±80px) y <code>CSS transform: scale() translate()</code> aplicado en tiempo real. Al confirmar, se serializa todo en <code>localStorage</code> como objeto JSON con el base64 y los valores de transformación.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#2a9d5c"><i class="fa-solid fa-mobile-screen"></i></div>
+          <div class="tl-content">
+            <h3>Navegación desbordada en móvil</h3>
+            <p>Las 8 pestañas no caben en pantallas de 360px. Solución: <code>overflow-x:auto; flex-wrap:nowrap</code> en el contenedor de tabs con <code>scrollbar-width:none</code> para ocultar la barra de scroll. En móvil el nav se apila verticalmente y las pestañas se deslizan horizontalmente con el dedo.</p>
+          </div>
+        </div>
+        <div class="tl-item" style="padding-bottom:0">
+          <div class="tl-dot" style="background:var(--accent)"><i class="fa-solid fa-print"></i></div>
+          <div class="tl-content">
+            <h3>Colores desaparecían al imprimir</h3>
+            <p>Los navegadores suprimen colores de fondo por defecto al imprimir. Solución: <code>-webkit-print-color-adjust: exact; print-color-adjust: exact</code> en el bloque <code>@media print</code>, más <code>page-break-inside: avoid</code> en cada tarjeta para evitar cortes en medio de bloques de contenido.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funcionalidades -->
+      <p class="section-title"><i class="fa-solid fa-star" style="color:var(--accent);margin-right:6px"></i>Funcionalidades implementadas</p>
+      <div class="services-grid" style="margin-bottom:24px">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-book-open"></i></div>
+          <h3>Navegación tipo libro</h3>
+          <p>Pestañas, flechas de teclado y botones prev/next. Animación fade suave entre páginas. Contador de página visible.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-camera"></i></div>
+          <h3>Editor de foto con persistencia</h3>
+          <p>Modal con zoom, posición X/Y. Guarda en localStorage. Restaura al reabrir el archivo en el mismo navegador.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-file-pdf"></i></div>
+          <h3>Descarga como PDF</h3>
+          <p>Botón y Ctrl+P muestran todas las páginas antes de imprimir y restauran la vista interactiva después.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-moon"></i></div>
+          <h3>Modo oscuro</h3>
+          <p>Toggle en la barra de navegación. CSS Custom Properties completas. Preferencia guardada en localStorage.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-language"></i></div>
+          <h3>Multiidioma ES / EN</h3>
+          <p>JSON de traducciones integrado. Cambio instantáneo sin recarga. Idioma guardado en localStorage.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-paper-plane"></i></div>
+          <h3>Formulario de contacto</h3>
+          <p>Formulario funcional via Formspree. Sin backend ni servidor. Fallback automático a mailto si no hay ID configurado.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3>Animaciones Intersection Observer</h3>
+          <p>Elementos animados al entrar en viewport con reveal, reveal-left, reveal-scale y stagger escalonado.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-chart-simple"></i></div>
+          <h3>Analytics GA4 integrado</h3>
+          <p>Google Analytics 4 cargado dinámicamente. Solo activo si configuras tu Measurement ID. Tracking de page views.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-file-arrow-down"></i></div>
+          <h3>Exportar configuración</h3>
+          <p>Botón JSON en la navbar descarga un archivo con tema, idioma, foto (base64) y ajustes actuales.</p>
+        </div>
+      </div>
+
+      <!-- Mejoras futuras -->
+      <p class="section-title"><i class="fa-solid fa-rocket" style="color:var(--accent);margin-right:6px"></i>Mejoras futuras</p>
+      <div class="cert-grid">
+        <div class="cert-chip"><i class="fa-brands fa-react" style="color:#61dafb"></i><div><strong>Migrar a React + Vite</strong><span>Componentes, estado, HMR</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-cloud-arrow-up"></i><div><strong>Backend para foto</strong><span>Cloudinary o Supabase Storage</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Modo oscuro ✓</strong><span>Toggle + CSS variables + localStorage</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Multiidioma ES/EN ✓</strong><span>JSON traducciones + i18n manual</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Formulario funcional ✓</strong><span>Formspree sin backend</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Analytics integrado ✓</strong><span>Google Analytics 4</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Animaciones avanzadas ✓</strong><span>Intersection Observer + scroll</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Exportar config ✓</strong><span>JSON con foto + ajustes</span></div></div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end book-wrapper -->
+
+<!-- ══ PHOTO EDITOR MODAL ══ -->
+<div class="photo-modal-overlay" id="photoModal">
+  <div class="photo-modal">
+    <h3><i class="fa-solid fa-image" style="color:var(--accent)"></i> Editor de foto de perfil</h3>
+    <div class="photo-preview-wrap">
+      <img id="modalPreviewImg" src="" alt="Preview" style="width:100%;height:100%;object-fit:cover;transform-origin:center;"/>
+    </div>
+    <div class="modal-controls">
+      <div class="slider-row">
+        <label><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</label>
+        <input type="range" id="scaleSlider" min="50" max="250" value="100"/>
+        <span id="scaleValue" style="width:38px;text-align:right;font-size:.78rem;color:var(--muted);">100%</span>
+      </div>
+      <div class="slider-row">
+        <label><i class="fa-solid fa-arrows-left-right"></i> Horizontal</label>
+        <input type="range" id="offsetXSlider" min="-80" max="80" value="0"/>
+      </div>
+      <div class="slider-row">
+        <label><i class="fa-solid fa-arrows-up-down"></i> Vertical</label>
+        <input type="range" id="offsetYSlider" min="-80" max="80" value="0"/>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-modal change" onclick="document.getElementById('photoInput').click()">
+        <i class="fa-solid fa-folder-open"></i> Cambiar foto
+      </button>
+      <button class="btn-modal cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-modal confirm" onclick="confirmPhoto()">
+        <i class="fa-solid fa-floppy-disk"></i> Guardar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   I18N – TRADUCCIONES ES / EN
+═══════════════════════════════════════════════════ */
+const TRANSLATIONS = {
+  es: {
+    // Nav tabs
+    tab0:'🏠 Inicio', tab1:'Perfil', tab2:'Educación', tab3:'Servicios',
+    tab4:'Habilidades', tab5:'Proyectos', tab6:'Contacto', tab7:'⚙️ Dev',
+    // Cover
+    coverBadge:'Disponible para proyectos',
+    coverTitle:'Analista y Desarrollador de Software · QA Automation · UI/UX',
+    coverDesc:'Tecnólogo SENA con experiencia práctica en desarrollo frontend, automatización de pruebas y administración de plataformas web. Apasionado por productos digitales que combinan funcionalidad, diseño e innovación.',
+    coverBtnCV:'Descargar CV', coverBtnContact:'Contacto',
+    stat1:'Certificaciones', stat2:'Exp. práctica', stat3:'Tecnologías', stat4:'Tecnólogo SENA',
+    // Pages headers
+    profileTitle:'Perfil Profesional', profileSub:'Quién soy y qué me define como profesional',
+    eduTitle:'Educación & Certificaciones', eduSub:'Formación académica y aprendizaje continuo',
+    servTitle:'Mis Servicios', servSub:'Lo que puedo hacer por tu proyecto o empresa',
+    skillsTitle:'Habilidades & Tecnologías', skillsSub:'Stack técnico organizado por área',
+    projTitle:'Proyectos', projSub:'6 repositorios reales en GitHub',
+    contactTitle:'Contacto & Referencias', contactSub:'¡Hablemos de tu próximo proyecto!',
+    devTitle:'Cómo construí este CV', devSub:'Decisiones técnicas, arquitectura y lecciones aprendidas',
+    // Contact
+    contactInfo:'Contacto', personalData:'Datos personales', sendMessage:'Enviar mensaje',
+    formName:'Nombre completo', formEmail:'Correo electrónico', formSubject:'Asunto',
+    formMessage:'Mensaje', formSend:'Enviar mensaje',
+    formNote:'Formulario enviado vía Formspree · Sin backend requerido',
+    formOk:'¡Mensaje enviado! Te responderé pronto.',
+    formErr:'Error al enviar. Intenta por WhatsApp o email.',
+    formLoading:'Enviando...',
+    labRefs:'Referencias Laborales', personalRef:'Referencia Personal',
+    ctaText:'¿Listo para trabajar juntos?',
+    exportBtn:'JSON',
+  },
+  en: {
+    tab0:'🏠 Home', tab1:'Profile', tab2:'Education', tab3:'Services',
+    tab4:'Skills', tab5:'Projects', tab6:'Contact', tab7:'⚙️ Dev',
+    coverBadge:'Available for projects',
+    coverTitle:'Software Analyst & Developer · QA Automation · UI/UX',
+    coverDesc:'SENA Technologist with hands-on experience in frontend development, test automation and web platform administration. Passionate about digital products that combine functionality, design and innovation.',
+    coverBtnCV:'Download CV', coverBtnContact:'Contact',
+    stat1:'Certifications', stat2:'Practical exp.', stat3:'Technologies', stat4:'SENA Grad',
+    profileTitle:'Professional Profile', profileSub:'Who I am and what defines me as a professional',
+    eduTitle:'Education & Certifications', eduSub:'Academic background and continuous learning',
+    servTitle:'My Services', servSub:'What I can do for your project or company',
+    skillsTitle:'Skills & Technologies', skillsSub:'Technical stack organized by area',
+    projTitle:'Projects', projSub:'6 real GitHub repositories',
+    contactTitle:'Contact & References', contactSub:"Let's talk about your next project!",
+    devTitle:'How I built this CV', devSub:'Technical decisions, architecture and lessons learned',
+    contactInfo:'Contact', personalData:'Personal info', sendMessage:'Send message',
+    formName:'Full name', formEmail:'Email address', formSubject:'Subject',
+    formMessage:'Message', formSend:'Send message',
+    formNote:'Form sent via Formspree · No backend required',
+    formOk:"Message sent! I'll get back to you soon.",
+    formErr:'Send error. Try WhatsApp or email.',
+    formLoading:'Sending...',
+    labRefs:'Work References', personalRef:'Personal Reference',
+    ctaText:'Ready to work together?',
+    exportBtn:'JSON',
+  }
+};
+
+let currentLang = localStorage.getItem('portfolio_lang') || 'es';
+
+function applyTranslations(){
+  const t = TRANSLATIONS[currentLang];
+  // Nav tabs
+  const tabs = document.querySelectorAll('.nav-tab');
+  ['tab0','tab1','tab2','tab3','tab4','tab5','tab6','tab7'].forEach((k,i) => {
+    if(tabs[i]) tabs[i].textContent = t[k];
+  });
+  // Elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(t[key] !== undefined) el.textContent = t[key];
+  });
+  // Cover special
+  const coverBadgeEl = document.querySelector('.cover-badge');
+  if(coverBadgeEl){ coverBadgeEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${t.coverBadge}`; }
+  document.getElementById('langLabel').textContent = currentLang === 'es' ? 'EN' : 'ES';
+}
+
+function toggleLang(){
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  localStorage.setItem('portfolio_lang', currentLang);
+  applyTranslations();
+}
+
+/* ═══════════════════════════════════════════════════
+   DARK MODE
+═══════════════════════════════════════════════════ */
+function applyTheme(dark){
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  const icon = document.getElementById('darkIcon');
+  if(icon){ icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; }
+}
+
+function toggleDark(){
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = !isDark;
+  localStorage.setItem('portfolio_dark', next ? '1' : '0');
+  applyTheme(next);
+}
+
+/* ═══════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════ */
+const TOTAL = 8;
+let current = 0;
+
+function goTo(n){
+  document.querySelectorAll('.page').forEach((p,i) => p.classList.toggle('active', i===n));
+  document.querySelectorAll('.nav-tab').forEach((t,i) => t.classList.toggle('active', i===n));
+  document.getElementById('pageCounter').textContent = `${n+1} / ${TOTAL}`;
+  current = n;
+  window.scrollTo({top:0, behavior:'smooth'});
+  // Re-trigger observers for newly visible page
+  setTimeout(() => observeReveal(), 100);
+}
+function nextPage(){ goTo(Math.min(current+1, TOTAL-1)); }
+function prevPage(){ goTo(Math.max(current-1, 0)); }
+document.addEventListener('keydown', e => {
+  if(e.key==='ArrowRight'||e.key==='ArrowDown') nextPage();
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp') prevPage();
+});
+
+/* ═══════════════════════════════════════════════════
+   SCROLL PROGRESS BAR
+═══════════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docH > 0 ? (scrollTop / docH) * 100 : 0;
+  const bar = document.getElementById('scrollProgress');
+  if(bar) bar.style.width = pct + '%';
+});
+
+/* ═══════════════════════════════════════════════════
+   INTERSECTION OBSERVER ANIMATIONS
+═══════════════════════════════════════════════════ */
+function observeReveal(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if(entry.isIntersecting){
+        // staggered delay based on index within parent
+        const siblings = Array.from(entry.target.parentElement?.children || []);
+        const delay = siblings.indexOf(entry.target) * 80;
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin:'0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal:not(.visible),.reveal-left:not(.visible),.reveal-scale:not(.visible)').forEach(el => observer.observe(el));
+
+  // Stagger children
+  document.querySelectorAll('.stagger').forEach(container => {
+    Array.from(container.children).forEach(child => {
+      if(!child.classList.contains('visible')){
+        const o = new IntersectionObserver(entries => {
+          entries.forEach((e,i) => {
+            if(e.isIntersecting){
+              const delay = Array.from(container.children).indexOf(e.target) * 70;
+              setTimeout(() => e.target.classList.add('visible'), delay);
+              o.unobserve(e.target);
+            }
+          });
+        }, {threshold:0.08});
+        o.observe(child);
+      }
+    });
+  });
+}
+
+/* Add reveal classes to major sections dynamically */
+function addRevealClasses(){
+  // Service cards stagger
+  const servGrid = document.querySelector('.services-grid');
+  if(servGrid) servGrid.classList.add('stagger');
+
+  // Skill pills stagger per section
+  document.querySelectorAll('.skills-grid').forEach(g => g.classList.add('stagger'));
+
+  // Project cards
+  document.querySelectorAll('.project-card').forEach(c => c.classList.add('reveal'));
+
+  // Timeline items
+  document.querySelectorAll('.tl-item').forEach(t => t.classList.add('reveal-left'));
+
+  // Cert chips
+  document.querySelectorAll('.cert-grid').forEach(g => g.classList.add('stagger'));
+
+  // Section titles
+  document.querySelectorAll('.section-title').forEach(s => s.classList.add('reveal'));
+
+  // Profile blocks
+  document.querySelectorAll('.profile-block').forEach(b => b.classList.add('reveal-scale'));
+}
+
+/* ═══════════════════════════════════════════════════
+   CONTACT FORM – FORMSPREE
+═══════════════════════════════════════════════════ */
+// ⚠️ Reemplaza YOUR_FORM_ID con tu ID real de Formspree (https://formspree.io)
+const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+async function handleFormSubmit(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('formSubmitBtn');
+  const status = document.getElementById('formStatus');
+  const t = TRANSLATIONS[currentLang];
+
+  btn.disabled = true;
+  btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${t.formLoading}`;
+  status.className = 'form-status loading';
+  status.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${t.formLoading}`;
+  status.style.display = 'flex';
+
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    subject: form.subject.value,
+    message: form.message.value
+  };
+
+  // Si no hay ID configurado, simular éxito con mailto fallback
+  if(FORMSPREE_ID === 'YOUR_FORM_ID'){
+    // Fallback: abrir cliente de correo
+    const body = encodeURIComponent(`Nombre: ${data.name}\nCorreo: ${data.email}\n\nMensaje:\n${data.message}`);
+    window.open(`mailto:creadormultiple@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${body}`);
+    status.className = 'form-status success';
+    status.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${t.formOk}`;
+    btn.disabled = false;
+    btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> ${t.formSend}`;
+    form.reset();
+    return;
+  }
+
+  try {
+    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if(res.ok){
+      status.className = 'form-status success';
+      status.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${t.formOk}`;
+      form.reset();
+    } else {
+      throw new Error('server');
+    }
+  } catch(err){
+    status.className = 'form-status error';
+    status.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${t.formErr}`;
+  }
+  btn.disabled = false;
+  btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> ${t.formSend}`;
+}
+
+/* ═══════════════════════════════════════════════════
+   ANALYTICS – GOOGLE ANALYTICS 4 (opcional)
+═══════════════════════════════════════════════════ */
+// ⚠️ Reemplaza YOUR_GA4_ID con tu Measurement ID (ej: G-XXXXXXXXXX)
+// Obtén uno gratis en https://analytics.google.com
+const GA4_ID = 'YOUR_GA4_ID';
+
+function loadAnalytics(){
+  if(GA4_ID === 'YOUR_GA4_ID') return; // No cargar si no está configurado
+  const s1 = document.createElement('script');
+  s1.async = true;
+  s1.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+  document.head.appendChild(s1);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', GA4_ID, { page_title: 'Portfolio Alexander Cano' });
+}
+
+function trackPageView(pageName){
+  if(typeof window.gtag === 'function'){
+    window.gtag('event', 'page_view', { page_title: pageName, page_location: window.location.href });
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   EXPORT CONFIG – JSON
+═══════════════════════════════════════════════════ */
+function exportConfig(){
+  const photoSaved = (() => {
+    try { return JSON.parse(localStorage.getItem('portfolio_photo') || 'null'); } catch(e){ return null; }
+  })();
+
+  const config = {
+    exportDate: new Date().toISOString(),
+    version: '2.0',
+    settings: {
+      theme: document.documentElement.getAttribute('data-theme') || 'light',
+      language: currentLang,
+    },
+    photo: photoSaved ? {
+      scale: photoSaved.scale,
+      offsetX: photoSaved.offsetX,
+      offsetY: photoSaved.offsetY,
+      hasPhoto: true,
+      src: photoSaved.src  // base64 completo
+    } : { hasPhoto: false },
+    analytics: {
+      configured: GA4_ID !== 'YOUR_GA4_ID',
+      gaId: GA4_ID !== 'YOUR_GA4_ID' ? GA4_ID : null
+    },
+    contactForm: {
+      configured: FORMSPREE_ID !== 'YOUR_FORM_ID',
+      formspreeId: FORMSPREE_ID !== 'YOUR_FORM_ID' ? FORMSPREE_ID : null
+    }
+  };
+
+  const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `portfolio-config-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* ═══════════════════════════════════════════════════
+   PHOTO EDITOR
+═══════════════════════════════════════════════════ */
+let modalImgSrc = null;
+let modalScale = 1;
+let modalOffsetX = 0;
+let modalOffsetY = 0;
+
+function openPhotoModal(){
+  const current = document.getElementById('profileImg').src;
+  const isDefault = current.includes('svg+xml');
+  if(isDefault){
+    document.getElementById('photoInput').click();
+  } else {
+    modalImgSrc = current;
+    showModal();
+  }
+}
+
+function loadPhotoToModal(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => { modalImgSrc = ev.target.result; showModal(); };
+  reader.readAsDataURL(file);
+  e.target.value = '';
+}
+
+function showModal(){
+  modalScale = 1; modalOffsetX = 0; modalOffsetY = 0;
+  document.getElementById('scaleSlider').value = 100;
+  document.getElementById('scaleValue').textContent = '100%';
+  document.getElementById('offsetXSlider').value = 0;
+  document.getElementById('offsetYSlider').value = 0;
+  updatePreview();
+  document.getElementById('photoModal').classList.add('open');
+}
+
+function updatePreview(){
+  const img = document.getElementById('modalPreviewImg');
+  img.src = modalImgSrc;
+  img.style.transform = `scale(${modalScale}) translate(${modalOffsetX}px, ${modalOffsetY}px)`;
+}
+
+function confirmPhoto(){
+  const mainImg = document.getElementById('profileImg');
+  mainImg.src = modalImgSrc;
+  mainImg.style.transform = `scale(${modalScale}) translate(${modalOffsetX}px, ${modalOffsetY}px)`;
+  try {
+    localStorage.setItem('portfolio_photo', JSON.stringify({
+      src: modalImgSrc, scale: modalScale, offsetX: modalOffsetX, offsetY: modalOffsetY
+    }));
+    const badge = document.getElementById('savedBadge');
+    badge.classList.add('show');
+    setTimeout(() => badge.classList.remove('show'), 3000);
+  } catch(err){}
+  closeModal();
+}
+
+function closeModal(){
+  document.getElementById('photoModal').classList.remove('open');
+}
+
+/* ═══════════════════════════════════════════════════
+   PDF / PRINT
+═══════════════════════════════════════════════════ */
+function printCV(){
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'block');
+  document.querySelector('.nav-bar').style.display = 'none';
+  window.print();
+  setTimeout(() => {
+    document.querySelector('.nav-bar').style.display = '';
+    document.querySelectorAll('.page').forEach((p,i) => {
+      p.style.display = i === current ? 'block' : 'none';
+    });
+    document.getElementById('page-'+current).classList.add('active');
+  }, 600);
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'block');
+  document.querySelector('.nav-bar').style.display = 'none';
+});
+window.addEventListener('afterprint', () => {
+  document.querySelector('.nav-bar').style.display = '';
+  document.querySelectorAll('.page').forEach((p,i) => {
+    p.style.display = i === current ? 'block' : 'none';
+  });
+});
+
+/* ═══════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Sliders photo modal
+  document.getElementById('scaleSlider').addEventListener('input', e => {
+    modalScale = e.target.value / 100;
+    document.getElementById('scaleValue').textContent = e.target.value + '%';
+    updatePreview();
+  });
+  document.getElementById('offsetXSlider').addEventListener('input', e => {
+    modalOffsetX = parseInt(e.target.value); updatePreview();
+  });
+  document.getElementById('offsetYSlider').addEventListener('input', e => {
+    modalOffsetY = parseInt(e.target.value); updatePreview();
+  });
+  document.getElementById('photoModal').addEventListener('click', e => {
+    if(e.target === document.getElementById('photoModal')) closeModal();
+  });
+
+  // Restore saved photo
+  try {
+    const saved = localStorage.getItem('portfolio_photo');
+    if(saved){
+      const data = JSON.parse(saved);
+      const mainImg = document.getElementById('profileImg');
+      mainImg.src = data.src;
+      mainImg.style.transform = `scale(${data.scale}) translate(${data.offsetX}px, ${data.offsetY}px)`;
+      modalImgSrc = data.src; modalScale = data.scale;
+      modalOffsetX = data.offsetX; modalOffsetY = data.offsetY;
+    }
+  } catch(err){}
+
+  // Dark mode restore
+  const savedDark = localStorage.getItem('portfolio_dark');
+  applyTheme(savedDark === '1');
+
+  // Language restore
+  applyTranslations();
+
+  // Add animation classes and observe
+  addRevealClasses();
+  observeReveal();
+
+  // Analytics
+  loadAnalytics();
+
+  // Track initial view
+  trackPageView('Home – Alexander Cano');
+});
+</script>
+</body>
+</html>
