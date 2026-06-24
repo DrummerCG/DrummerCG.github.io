@@ -41,6 +41,10 @@
 [data-theme="dark"] .cover{background:linear-gradient(145deg,#080f1e 0%,#0d1a36 55%,#102050 100%);}
 [data-theme="dark"] .cover-bottom{background:rgba(0,0,0,.5);}
 [data-theme="dark"] .page-header{background:linear-gradient(135deg,#0d1a36 0%,#0f2040 60%,#1a3060 100%);}
+[data-theme="dark"] .page-header h2{color:var(--gold);}
+[data-theme="dark"] .page-header p{color:rgba(240,192,64,.65);}
+[data-theme="dark"] .page-icon{background:rgba(240,192,64,.15);}
+[data-theme="dark"] .page-icon i{color:var(--gold);}
 [data-theme="dark"] .photo-modal{background:var(--card);}
 [data-theme="dark"] .photo-modal h3{color:var(--text);}
 [data-theme="dark"] .btn-modal.cancel{background:var(--border);color:var(--text);}
@@ -627,9 +631,9 @@ body{
         <div class="cover-photo-col">
           <div class="photo-frame" onclick="openPhotoModal()">
             <img id="profileImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='150' height='150' fill='%231c3c6c' rx='75'/%3E%3Ctext x='75' y='90' font-size='60' text-anchor='middle' fill='%234a8eff'%3E%F0%9F%91%A4%3C/text%3E%3C/svg%3E" alt="Foto"/>
-            <div class="upload-hint"><i class="fa-solid fa-camera" style="font-size:1.2rem"></i><span>Editar foto</span></div>
+            <div class="upload-hint"><i class="fa-solid fa-camera" style="font-size:1.2rem"></i><span data-i18n="editPhoto">Editar foto</span></div>
           </div>
-          <div class="photo-saved-badge" id="savedBadge"><i class="fa-solid fa-circle-check"></i> Foto guardada</div>
+          <div class="photo-saved-badge" id="savedBadge"><i class="fa-solid fa-circle-check"></i> <span data-i18n="photoSaved">Foto guardada</span></div>
           <input type="file" id="photoInput" accept="image/*" onchange="loadPhotoToModal(event)"/>
           <div class="cover-social">
             <a href="https://www.linkedin.com/in/alexander-cano-8b76a6414/" target="_blank" class="soc-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -662,18 +666,18 @@ body{
   <div class="page" id="page-1">
     <div class="page-header">
       <div class="page-icon"><i class="fa-solid fa-user"></i></div>
-      <div><h2>Perfil Profesional</h2><p>Quién soy y qué me define como profesional</p></div>
+      <div><h2 data-i18n="profileTitle">Perfil Profesional</h2><p data-i18n="profileSub">Quién soy y qué me define como profesional</p></div>
     </div>
     <div class="page-body">
       <div class="profile-grid">
         <div class="profile-block full">
-          <h3><i class="fa-solid fa-id-card-clip"></i> Resumen</h3>
-          <p>Tecnólogo en Análisis y Desarrollo de Software del SENA, con experiencia práctica en desarrollo frontend, automatización de pruebas, administración de plataformas web educativas e <strong>instrucción técnica</strong>. Cuento con conocimientos en HTML, CSS, JavaScript, React y Node.js, además de experiencia en herramientas CMS como WordPress, Elementor y Moodle.</p>
-          <br/><p>He editado e impartido el curso completo de <strong>Fundamentos de React</strong> en IzyAcademy, lo que me permitió consolidar habilidades de comunicación técnica, síntesis pedagógica y liderazgo en entornos de formación profesional. Participé también en diseño UI/UX con Figma y Adobe XD, y en automatización de pruebas con Python y Selenium WebDriver.</p>
-          <br/><p>Me defino como <strong>Frontend Developer Junior</strong> con experiencia en <strong>QA Automation</strong>, administración de plataformas web y <strong>docencia técnica en React</strong>.</p>
+          <h3><i class="fa-solid fa-id-card-clip"></i> <span data-i18n="profResumenTitle">Resumen</span></h3>
+          <p data-i18n="profResumen1">Tecnólogo en Análisis y Desarrollo de Software del SENA, con experiencia práctica en desarrollo frontend, automatización de pruebas, administración de plataformas web educativas e <strong>instrucción técnica</strong>. Cuento con conocimientos en HTML, CSS, JavaScript, React y Node.js, además de experiencia en herramientas CMS como WordPress, Elementor y Moodle.</p>
+          <br/><p data-i18n="profResumen2">He editado e impartido el curso completo de <strong>Fundamentos de React</strong> en IzyAcademy, lo que me permitió consolidar habilidades de comunicación técnica, síntesis pedagógica y liderazgo en entornos de formación profesional. Participé también en diseño UI/UX con Figma y Adobe XD, y en automatización de pruebas con Python y Selenium WebDriver.</p>
+          <br/><p data-i18n="profResumen3">Me defino como <strong>Frontend Developer Junior</strong> con experiencia en <strong>QA Automation</strong>, administración de plataformas web y <strong>docencia técnica en React</strong>.</p>
         </div>
         <div class="profile-block">
-          <h3><i class="fa-solid fa-circle-info"></i> Datos personales</h3>
+          <h3><i class="fa-solid fa-circle-info"></i> <span data-i18n="personalData">Datos personales</span></h3>
           <ul class="info-list">
             <li><i class="fa-solid fa-location-dot"></i> Itagüí, Antioquia · Calle 83 #58-450</li>
             <li><i class="fa-solid fa-phone"></i> 310 445 4288</li>
@@ -682,29 +686,29 @@ body{
           </ul>
         </div>
         <div class="profile-block">
-          <h3><i class="fa-solid fa-briefcase"></i> Experiencia</h3>
+          <h3><i class="fa-solid fa-briefcase"></i> <span data-i18n="experienceTitle">Experiencia</span></h3>
           <ul class="info-list">
             <li><i class="fa-solid fa-chalkboard-user" style="color:var(--gold)"></i>
-              <span><strong>Instructor – Curso Fundamentos de React</strong><br/>
+              <span><strong data-i18n="exp1Title">Instructor – Curso Fundamentos de React</strong><br/>
               IzyAcademy · Q-Vision Technologies<br/>
-              Diseño curricular · Clases grabadas · Mentoría · Proyecto final guiado<br/>
-              <span style="color:var(--muted);font-size:.76rem">Docencia técnica · 2025</span></span>
+              <span data-i18n="exp1Desc">Diseño curricular · Clases grabadas · Mentoría · Proyecto final guiado</span><br/>
+              <span style="color:var(--muted);font-size:.76rem" data-i18n="exp1Meta">Docencia técnica · 2025</span></span>
             </li>
             <li><i class="fa-solid fa-building"></i>
               <span><strong>Q-Vision Technologies (IzyAcademy)</strong><br/>
-              Soporte Frontend · Documentación · QA Funcional · Plataformas web educativas<br/>
-              <span style="color:var(--muted);font-size:.76rem">Práctica profesional · 6 meses</span></span>
+              <span data-i18n="exp2Desc">Soporte Frontend · Documentación · QA Funcional · Plataformas web educativas</span><br/>
+              <span style="color:var(--muted);font-size:.76rem" data-i18n="exp2Meta">Práctica profesional · 6 meses</span></span>
             </li>
           </ul>
         </div>
         <div class="profile-block full">
-          <h3><i class="fa-solid fa-star"></i> Rasgos clave</h3>
+          <h3><i class="fa-solid fa-star"></i> <span data-i18n="traitsTitle">Rasgos clave</span></h3>
           <div class="tag-cloud">
-            <span class="tag">Proactivo</span><span class="tag accent">Orientado al servicio</span>
-            <span class="tag">Aprendizaje continuo</span><span class="tag accent">Trabajo colaborativo</span>
-            <span class="tag">SCRUM</span><span class="tag gold">Visión integral</span>
-            <span class="tag">Responsable</span><span class="tag accent">Adaptable</span>
-            <span class="tag gold">Docencia técnica</span><span class="tag accent">Comunicación clara</span>
+            <span class="tag" data-i18n="trait1">Proactivo</span><span class="tag accent" data-i18n="trait2">Orientado al servicio</span>
+            <span class="tag" data-i18n="trait3">Aprendizaje continuo</span><span class="tag accent" data-i18n="trait4">Trabajo colaborativo</span>
+            <span class="tag">SCRUM</span><span class="tag gold" data-i18n="trait5">Visión integral</span>
+            <span class="tag" data-i18n="trait6">Responsable</span><span class="tag accent" data-i18n="trait7">Adaptable</span>
+            <span class="tag gold" data-i18n="trait8">Docencia técnica</span><span class="tag accent" data-i18n="trait9">Comunicación clara</span>
           </div>
         </div>
       </div>
@@ -715,36 +719,36 @@ body{
   <div class="page" id="page-2">
     <div class="page-header">
       <div class="page-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-      <div><h2>Educación &amp; Certificaciones</h2><p>Formación académica y aprendizaje continuo</p></div>
+      <div><h2 data-i18n="eduTitle">Educación &amp; Certificaciones</h2><p data-i18n="eduSub">Formación académica y aprendizaje continuo</p></div>
     </div>
     <div class="page-body">
-      <p class="section-title">Títulos Académicos</p>
+      <p class="section-title" data-i18n="academicTitlesTitle">Títulos Académicos</p>
       <div class="timeline">
         <div class="tl-item">
           <div class="tl-dot"><i class="fa-solid fa-school"></i></div>
           <div class="tl-content">
-            <h3>Bachiller Académico</h3>
+            <h3 data-i18n="edu1Title">Bachiller Académico</h3>
             <div class="tl-meta"><span><i class="fa-solid fa-building-columns"></i> Liceo Enrique Vélez Escobar</span><span><i class="fa-regular fa-calendar"></i> 2006</span></div>
           </div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"><i class="fa-solid fa-computer"></i></div>
           <div class="tl-content">
-            <h3>Técnico en Mantenimiento y Reparación de Equipos de Cómputo</h3>
+            <h3 data-i18n="edu2Title">Técnico en Mantenimiento y Reparación de Equipos de Cómputo</h3>
             <div class="tl-meta"><span><i class="fa-solid fa-building-columns"></i> CEFIT / Convenio SENA</span><span><i class="fa-regular fa-calendar"></i> 2007</span></div>
           </div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"><i class="fa-solid fa-code"></i></div>
           <div class="tl-content">
-            <h3>Tecnólogo en Análisis y Desarrollo de Software</h3>
-            <div class="tl-meta"><span><i class="fa-solid fa-building-columns"></i> SENA – Centro de Comercio y Servicios, Regional Tolima</span><span><i class="fa-regular fa-calendar"></i> Mayo 2026</span></div>
-            <p>Reconocimiento a la Excelencia por sentido de pertenencia, liderazgo y rendimiento académico. SENA Regional Tolima, diciembre 2024.</p>
+            <h3 data-i18n="edu3Title">Tecnólogo en Análisis y Desarrollo de Software</h3>
+            <div class="tl-meta"><span><i class="fa-solid fa-building-columns"></i> SENA – Centro de Comercio y Servicios, Regional Tolima</span><span><i class="fa-regular fa-calendar"></i> <span data-i18n="edu3Date">Mayo 2026</span></span></div>
+            <p data-i18n="edu3Desc">Reconocimiento a la Excelencia por sentido de pertenencia, liderazgo y rendimiento académico. SENA Regional Tolima, diciembre 2024.</p>
           </div>
         </div>
       </div>
 
-      <p class="section-title" style="margin-top:6px">Certificaciones por institución</p>
+      <p class="section-title" style="margin-top:6px" data-i18n="certsByInstitutionTitle">Certificaciones por institución</p>
 
       <!-- IzyAcademy -->
       <div class="cert-group">
@@ -812,7 +816,7 @@ body{
 
       <!-- Otros -->
       <div class="cert-group">
-        <div class="cert-group-title"><i class="fa-solid fa-certificate"></i> Otros</div>
+        <div class="cert-group-title"><i class="fa-solid fa-certificate"></i> <span data-i18n="otherCerts">Otros</span></div>
         <div class="cert-grid">
           <div class="cert-chip"><i class="fa-solid fa-arrows-spin"></i><div><strong>Scrum Fundamentals (SFC™)</strong><span>SCRUMstudy · Sep 2025</span></div></div>
           <div class="cert-chip"><i class="fa-solid fa-chart-line"></i><div><strong>Power BI</strong><span>Aportes en Línea · Feb 2026 · 8 h</span></div></div>
@@ -827,51 +831,51 @@ body{
   <div class="page" id="page-3">
     <div class="page-header">
       <div class="page-icon"><i class="fa-solid fa-briefcase"></i></div>
-      <div><h2>Mis Servicios</h2><p>Lo que puedo hacer en proyectos o empresa</p></div>
+      <div><h2 data-i18n="servTitle">Mis Servicios</h2><p data-i18n="servSub">Lo que puedo hacer en proyectos o empresa</p></div>
     </div>
     <div class="page-body">
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
-          <h3>Desarrollo Frontend</h3>
-          <p>Interfaces web modernas, responsivas y accesibles con HTML5, CSS3, JavaScript y React. Integración con APIs REST.</p>
+          <h3 data-i18n="serv1Title">Desarrollo Frontend</h3>
+          <p data-i18n="serv1Desc">Interfaces web modernas, responsivas y accesibles con HTML5, CSS3, JavaScript y React. Integración con APIs REST.</p>
           <input type="checkbox" class="read-more-toggle" id="s1"/>
-          <label class="read-more-btn" for="s1"><span>Leer más ↓</span></label>
-          <div class="extra-text">Componentes reutilizables, metodología BEM, experiencia con Elementor/WordPress y Moodle para plataformas CMS y educativas.</div>
+          <label class="read-more-btn" for="s1"><span data-i18n="readMore">Leer más ↓</span></label>
+          <div class="extra-text" data-i18n="serv1Extra">Componentes reutilizables, metodología BEM, experiencia con Elementor/WordPress y Moodle para plataformas CMS y educativas.</div>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
-          <h3>QA &amp; Automatización</h3>
-          <p>Pruebas funcionales y de rendimiento. Automatización con Selenium WebDriver, Screenplay y Python bajo el patrón POM.</p>
+          <h3 data-i18n="serv2Title">QA &amp; Automatización</h3>
+          <p data-i18n="serv2Desc">Pruebas funcionales y de rendimiento. Automatización con Selenium WebDriver, Screenplay y Python bajo el patrón POM.</p>
           <input type="checkbox" class="read-more-toggle" id="s2"/>
-          <label class="read-more-btn" for="s2"><span>Leer más ↓</span></label>
-          <div class="extra-text">Ingeniería de Requerimientos para mapear escenarios de prueba. Pruebas no funcionales de performance. Documentación técnica de casos de prueba.</div>
+          <label class="read-more-btn" for="s2"><span data-i18n="readMore">Leer más ↓</span></label>
+          <div class="extra-text" data-i18n="serv2Extra">Ingeniería de Requerimientos para mapear escenarios de prueba. Pruebas no funcionales de performance. Documentación técnica de casos de prueba.</div>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-          <h3>SEO &amp; Analytics</h3>
-          <p>Optimización on-page para motores de búsqueda. Análisis de tráfico con Google Analytics y visualización en Power BI.</p>
+          <h3 data-i18n="serv3Title">SEO &amp; Analytics</h3>
+          <p data-i18n="serv3Desc">Optimización on-page para motores de búsqueda. Análisis de tráfico con Google Analytics y visualización en Power BI.</p>
           <input type="checkbox" class="read-more-toggle" id="s3"/>
-          <label class="read-more-btn" for="s3"><span>Leer más ↓</span></label>
-          <div class="extra-text">Configuración de etiquetas, seguimiento de eventos y creación de contenido digital orientado a métricas para redes sociales.</div>
+          <label class="read-more-btn" for="s3"><span data-i18n="readMore">Leer más ↓</span></label>
+          <div class="extra-text" data-i18n="serv3Extra">Configuración de etiquetas, seguimiento de eventos y creación de contenido digital orientado a métricas para redes sociales.</div>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
-          <h3>Diseño Corporativo</h3>
-          <p>Identidad visual, materiales gráficos y piezas para redes sociales con Adobe Illustrator, Photoshop, InDesign y Figma.</p>
+          <h3 data-i18n="serv4Title">Diseño Corporativo</h3>
+          <p data-i18n="serv4Desc">Identidad visual, materiales gráficos y piezas para redes sociales con Adobe Illustrator, Photoshop, InDesign y Figma.</p>
           <input type="checkbox" class="read-more-toggle" id="s4"/>
-          <label class="read-more-btn" for="s4"><span>Leer más ↓</span></label>
-          <div class="extra-text">Logotipos, manuales de marca, presentaciones corporativas e infografías. Certificado Adobe ACP. Edición audiovisual con integración Adobe.</div>
+          <label class="read-more-btn" for="s4"><span data-i18n="readMore">Leer más ↓</span></label>
+          <div class="extra-text" data-i18n="serv4Extra">Logotipos, manuales de marca, presentaciones corporativas e infografías. Certificado Adobe ACP. Edición audiovisual con integración Adobe.</div>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-sitemap"></i></div>
-          <h3>Administración de Plataformas</h3>
-          <p>Gestión de plataformas educativas Moodle y sitios WordPress/Elementor. Soporte técnico, documentación y capacitación.</p>
+          <h3 data-i18n="serv5Title">Administración de Plataformas</h3>
+          <p data-i18n="serv5Desc">Gestión de plataformas educativas Moodle y sitios WordPress/Elementor. Soporte técnico, documentación y capacitación.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-database"></i></div>
-          <h3>Backend &amp; Bases de Datos</h3>
-          <p>Desarrollo con Node.js y Java (API REST). Gestión de bases de datos SQL y MongoDB. Fundamentos de AWS para la nube.</p>
+          <h3 data-i18n="serv6Title">Backend &amp; Bases de Datos</h3>
+          <p data-i18n="serv6Desc">Desarrollo con Node.js y Java (API REST). Gestión de bases de datos SQL y MongoDB. Fundamentos de AWS para la nube.</p>
         </div>
       </div>
     </div>
@@ -881,11 +885,11 @@ body{
   <div class="page" id="page-4">
     <div class="page-header">
       <div class="page-icon"><i class="fa-solid fa-layer-group"></i></div>
-      <div><h2>Habilidades &amp; Tecnologías</h2><p>Stack técnico organizado por área</p></div>
+      <div><h2 data-i18n="skillsTitle">Habilidades &amp; Tecnologías</h2><p data-i18n="skillsSub">Stack técnico organizado por área</p></div>
     </div>
     <div class="page-body">
       <div class="skills-section">
-        <h3><i class="fa-solid fa-display"></i> Frontend</h3>
+        <h3><i class="fa-solid fa-display"></i> <span data-i18n="skillsFrontend">Frontend</span></h3>
         <div class="skills-grid">
           <div class="skill-pill"><i class="devicon-html5-plain colored"></i> HTML5</div>
           <div class="skill-pill"><i class="devicon-css3-plain colored"></i> CSS3</div>
@@ -899,7 +903,7 @@ body{
         </div>
       </div>
       <div class="skills-section">
-        <h3><i class="fa-solid fa-server"></i> Backend &amp; QA Automation</h3>
+        <h3><i class="fa-solid fa-server"></i> <span data-i18n="skillsBackendQA">Backend &amp; QA Automation</span></h3>
         <div class="skills-grid">
           <div class="skill-pill"><i class="devicon-nodejs-plain colored"></i> Node.js</div>
           <div class="skill-pill"><i class="devicon-python-plain colored"></i> Python</div>
@@ -907,12 +911,12 @@ body{
           <div class="skill-pill"><i class="devicon-php-plain colored"></i> PHP</div>
           <div class="skill-pill"><i class="devicon-typescript-plain colored"></i> TypeScript</div>
           <div class="skill-pill"><i class="devicon-selenium-original colored"></i> Selenium WebDriver</div>
-          <div class="skill-pill"><i class="fa-solid fa-vial"></i> Pruebas funcionales</div>
-          <div class="skill-pill"><i class="fa-solid fa-gauge-high"></i> Pruebas de rendimiento</div>
+          <div class="skill-pill"><i class="fa-solid fa-vial"></i> <span data-i18n="funcTests">Pruebas funcionales</span></div>
+          <div class="skill-pill"><i class="fa-solid fa-gauge-high"></i> <span data-i18n="perfTests">Pruebas de rendimiento</span></div>
         </div>
       </div>
       <div class="skills-section">
-        <h3><i class="fa-solid fa-database"></i> Bases de Datos &amp; Cloud</h3>
+        <h3><i class="fa-solid fa-database"></i> <span data-i18n="skillsDBCloud">Bases de Datos &amp; Cloud</span></h3>
         <div class="skills-grid">
           <div class="skill-pill"><i class="devicon-mysql-plain colored"></i> SQL / MySQL</div>
           <div class="skill-pill"><i class="devicon-mongodb-plain colored"></i> MongoDB</div>
@@ -921,7 +925,7 @@ body{
         </div>
       </div>
       <div class="skills-section">
-        <h3><i class="fa-solid fa-pen-ruler"></i> UI/UX &amp; Diseño</h3>
+        <h3><i class="fa-solid fa-pen-ruler"></i> <span data-i18n="skillsUIUX">UI/UX &amp; Diseño</span></h3>
         <div class="skills-grid">
           <div class="skill-pill"><i class="devicon-figma-plain colored"></i> Figma</div>
           <div class="skill-pill"><i class="devicon-xd-plain colored"></i> Adobe XD</div>
@@ -932,13 +936,13 @@ body{
         </div>
       </div>
       <div class="skills-section">
-        <h3><i class="fa-solid fa-chart-bar"></i> Metodologías &amp; Herramientas</h3>
+        <h3><i class="fa-solid fa-chart-bar"></i> <span data-i18n="skillsMethods">Metodologías &amp; Herramientas</span></h3>
         <div class="skills-grid">
           <div class="skill-pill"><i class="fa-solid fa-arrows-spin"></i> SCRUM</div>
           <div class="skill-pill"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO</div>
           <div class="skill-pill"><i class="fa-brands fa-google" style="color:#4285f4"></i> Google Analytics</div>
           <div class="skill-pill"><i class="fa-solid fa-chart-line" style="color:#f2c811"></i> Power BI</div>
-          <div class="skill-pill"><i class="fa-solid fa-table" style="color:#217346"></i> Excel Intermedio</div>
+          <div class="skill-pill"><i class="fa-solid fa-table" style="color:#217346"></i> <span data-i18n="excelIntermediate">Excel Intermedio</span></div>
         </div>
       </div>
     </div>
@@ -948,77 +952,77 @@ body{
   <div class="page" id="page-5">
     <div class="page-header">
       <div class="page-icon"><i class="fa-solid fa-rocket"></i></div>
-      <div><h2>Proyectos</h2><p>6 repositorios reales + 1 curso impartido en GitHub</p></div>
+      <div><h2 data-i18n="projTitle">Proyectos</h2><p data-i18n="projSub">6 repositorios reales + 1 curso impartido en GitHub</p></div>
     </div>
     <div class="page-body">
       <div class="projects-grid">
         <div class="project-card" style="border-left:3px solid var(--gold);">
           <div class="project-num" style="color:var(--gold);">★</div>
           <div class="project-body">
-            <h3>Instructor – Curso Fundamentos de React · IzyAcademy</h3>
-            <p>Edité e impartí el curso completo de Fundamentos de React para IzyAcademy (Q-Vision Technologies). Cubrí hooks, componentes, props, estado, eventos, rutas y conexiones con APIs. El repositorio base del curso (<em>IzyplusHD</em>) fue construido en paralelo como material práctico para los estudiantes.</p>
+            <h3 data-i18n="projInstructorTitle">Instructor – Curso Fundamentos de React · IzyAcademy</h3>
+            <p data-i18n="projInstructorDesc">Edité e impartí el curso completo de Fundamentos de React para IzyAcademy (Q-Vision Technologies). Cubrí hooks, componentes, props, estado, eventos, rutas y conexiones con APIs. El repositorio base del curso (<em>IzyplusHD</em>) fue construido en paralelo como material práctico para los estudiantes.</p>
             <div class="project-tags">
               <span class="project-tag">React</span>
               <span class="project-tag">Vite</span>
-              <span class="project-tag">Docencia técnica</span>
-              <span class="project-tag">Diseño curricular</span>
-              <span class="project-tag">Mentoría</span>
+              <span class="project-tag" data-i18n="tagTeaching">Docencia técnica</span>
+              <span class="project-tag" data-i18n="tagCurriculum">Diseño curricular</span>
+              <span class="project-tag" data-i18n="tagMentoring">Mentoría</span>
             </div>
-            <a href="https://github.com/DrummerCG/IzyplusHD---Curso-Fundamentos-de-React." target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Ver repositorio del curso</a>
+            <a href="https://github.com/DrummerCG/IzyplusHD---Curso-Fundamentos-de-React." target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> <span data-i18n="viewCourseRepo">Ver repositorio del curso</span></a>
           </div>
         </div>
         <div class="project-card">
           <div class="project-num">01</div>
           <div class="project-body">
-            <h3>Front-End – Decoraciones Ortiz (SENA)</h3>
-            <p>Interfaz de usuario para el aplicativo de ventas de la empresa Decoraciones Ortiz, desarrollada como proyecto de grado SENA. Construida en React con componentes modulares y flujo de gestión de ventas.</p>
+            <h3 data-i18n="proj1Title">Front-End – Decoraciones Ortiz (SENA)</h3>
+            <p data-i18n="proj1Desc">Interfaz de usuario para el aplicativo de ventas de la empresa Decoraciones Ortiz, desarrollada como proyecto de grado SENA. Construida en React con componentes modulares y flujo de gestión de ventas.</p>
             <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">JavaScript</span><span class="project-tag">CSS3</span></div>
-            <a href="https://github.com/DrummerCG/Front-Decoraciones" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+            <a href="https://github.com/DrummerCG/Front-Decoraciones" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> <span data-i18n="preview">Previsualizar</span></a>
           </div>
         </div>
         <div class="project-card">
           <div class="project-num">02</div>
           <div class="project-body">
-            <h3>Back-End – Decoraciones Ortiz (SENA)</h3>
-            <p>API backend para el aplicativo de ventas de Decoraciones Ortiz. Desarrollado en Node.js con gestión de productos, clientes y pedidos para el proyecto de grado SENA.</p>
+            <h3 data-i18n="proj2Title">Back-End – Decoraciones Ortiz (SENA)</h3>
+            <p data-i18n="proj2Desc">API backend para el aplicativo de ventas de Decoraciones Ortiz. Desarrollado en Node.js con gestión de productos, clientes y pedidos para el proyecto de grado SENA.</p>
             <div class="project-tags"><span class="project-tag">Node.js</span><span class="project-tag">REST API</span><span class="project-tag">JavaScript</span></div>
-            <a href="https://github.com/DrummerCG/Back-Decoraciones" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+            <a href="https://github.com/DrummerCG/Back-Decoraciones" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> <span data-i18n="preview">Previsualizar</span></a>
           </div>
         </div>
         <div class="project-card">
           <div class="project-num">03</div>
           <div class="project-body">
-            <h3>IzyAcademy – Frontend React</h3>
-            <p>Repositorio oficial del frontend de la plataforma IzyAcademy para formación profesional. Aplicación web escrita en React con rutas, componentes dinámicos y consumo de APIs.</p>
-            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">JavaScript</span><span class="project-tag">Frontend</span></div>
-            <a href="https://github.com/DrummerCG/Izzy-Front" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+            <h3 data-i18n="proj3Title">IzyAcademy – Frontend React</h3>
+            <p data-i18n="proj3Desc">Repositorio oficial del frontend de la plataforma IzyAcademy para formación profesional. Aplicación web escrita en React con rutas, componentes dinámicos y consumo de APIs.</p>
+            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">JavaScript</span><span class="project-tag" data-i18n="tagFrontend">Frontend</span></div>
+            <a href="https://github.com/DrummerCG/Izzy-Front" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> <span data-i18n="preview">Previsualizar</span></a>
           </div>
         </div>
         <div class="project-card">
           <div class="project-num">04</div>
           <div class="project-body">
-            <h3>IzyAcademy – Backend Java / Spring Boot</h3>
-            <p>Backend RESTful para IzyAcademy. Gestiona usuarios con registro y autenticación segura de contraseñas usando Spring Security. Base de datos MariaDB vía JPA/Hibernate, construido con Maven y Java 21.</p>
+            <h3 data-i18n="proj4Title">IzyAcademy – Backend Java / Spring Boot</h3>
+            <p data-i18n="proj4Desc">Backend RESTful para IzyAcademy. Gestiona usuarios con registro y autenticación segura de contraseñas usando Spring Security. Base de datos MariaDB vía JPA/Hibernate, construido con Maven y Java 21.</p>
             <div class="project-tags"><span class="project-tag">Java 21</span><span class="project-tag">Spring Boot</span><span class="project-tag">Spring Security</span><span class="project-tag">MariaDB</span><span class="project-tag">Maven</span></div>
-            <a href="https://github.com/DrummerCG/Izy-Backend" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+            <a href="https://github.com/DrummerCG/Izy-Backend" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> <span data-i18n="preview">Previsualizar</span></a>
           </div>
         </div>
         <div class="project-card">
           <div class="project-num">05</div>
           <div class="project-body">
-            <h3>AutoRegistro – Suite de Automatización QA</h3>
-            <p>Suite completa de automatización en Python con Selenium WebDriver para gestionar procesos administrativos en Moodle y WordPress de IzyAcademy: registro de usuarios, asignación de cursos y tareas complejas sin errores.</p>
+            <h3 data-i18n="proj5Title">AutoRegistro – Suite de Automatización QA</h3>
+            <p data-i18n="proj5Desc">Suite completa de automatización en Python con Selenium WebDriver para gestionar procesos administrativos en Moodle y WordPress de IzyAcademy: registro de usuarios, asignación de cursos y tareas complejas sin errores.</p>
             <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Selenium</span><span class="project-tag">Moodle</span><span class="project-tag">WordPress</span></div>
-            <a href="https://github.com/DrummerCG/AutoRegistro" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+            <a href="https://github.com/DrummerCG/AutoRegistro" target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> <span data-i18n="preview">Previsualizar</span></a>
           </div>
         </div>
         <div class="project-card">
           <div class="project-num">06</div>
           <div class="project-body">
-            <h3>IzyplusHD – Fundamentos de React</h3>
-            <p>Aplicación de práctica para el curso Fundamentos de React de IzyAcademy construida con Vite. Incluye componentes reutilizables, manejo de eventos, props y reglas de estilo simples como base de aprendizaje.</p>
-            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Vite</span><span class="project-tag">Props</span><span class="project-tag">Componentes</span></div>
-            <a href="https://github.com/DrummerCG/IzyplusHD---Curso-Fundamentos-de-React." target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> Previsualizar</a>
+            <h3 data-i18n="proj6Title">IzyplusHD – Fundamentos de React</h3>
+            <p data-i18n="proj6Desc">Aplicación de práctica para el curso Fundamentos de React de IzyAcademy construida con Vite. Incluye componentes reutilizables, manejo de eventos, props y reglas de estilo simples como base de aprendizaje.</p>
+            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Vite</span><span class="project-tag">Props</span><span class="project-tag" data-i18n="tagComponents">Componentes</span></div>
+            <a href="https://github.com/DrummerCG/IzyplusHD---Curso-Fundamentos-de-React." target="_blank" class="btn-sm"><i class="fa-brands fa-github"></i> <span data-i18n="preview">Previsualizar</span></a>
           </div>
         </div>
       </div>
@@ -1029,7 +1033,7 @@ body{
   <div class="page" id="page-6">
     <div class="page-header">
       <div class="page-icon"><i class="fa-solid fa-address-book"></i></div>
-      <div><h2 data-i18n="contactTitle">Contacto &amp; Referencias</h2><p data-i18n="contactSub">¡Hablemos de próximos proyectos!</p></div>
+      <div><h2 data-i18n="contactTitle">Contacto &amp; Referencias</h2><p data-i18n="contactSub">¡Hablemos de tu próximo proyecto!</p></div>
     </div>
     <div class="page-body">
       <div class="contact-grid">
@@ -1083,17 +1087,17 @@ body{
           <h3><i class="fa-solid fa-handshake"></i> <span data-i18n="labRefs">Referencias Laborales</span></h3>
           <div class="ref-card">
             <strong>Ricardo Alfonso Forero Bahamón</strong>
-            <span>Ingeniero en Sistemas e Informática</span>
+            <span data-i18n="refJob1">Ingeniero en Sistemas e Informática</span>
             <a href="tel:3144894640"><i class="fa-solid fa-phone" style="font-size:.73rem"></i> 314 489 4640</a>
           </div>
           <div class="ref-card">
             <strong>John Jairo Ortiz Restrepo</strong>
-            <span>Analista de Software</span>
+            <span data-i18n="refJob2">Analista de Software</span>
             <a href="tel:3045263657"><i class="fa-solid fa-phone" style="font-size:.73rem"></i> 304 526 3657</a>
           </div>
           <div class="ref-card">
             <strong>Santiago Upegui Quiroz</strong>
-            <span>Ingeniero en Sistemas e Informática</span>
+            <span data-i18n="refJob1">Ingeniero en Sistemas e Informática</span>
             <a href="tel:3002312301"><i class="fa-solid fa-phone" style="font-size:.73rem"></i> 300 231 2301</a>
           </div>
         </div>
@@ -1101,7 +1105,7 @@ body{
           <h3><i class="fa-solid fa-heart"></i> <span data-i18n="personalRef">Referencia Personal</span></h3>
           <div class="ref-card">
             <strong>Jenny Marcela Cano González</strong>
-            <span>Hermana</span>
+            <span data-i18n="sisterLabel">Hermana</span>
             <a href="tel:3023481213"><i class="fa-solid fa-phone" style="font-size:.73rem"></i> 302 348 1213</a>
           </div>
           <div style="margin-top:18px;padding:16px;background:linear-gradient(135deg,var(--navy),#234b8a);border-radius:12px;text-align:center;">
@@ -1118,144 +1122,144 @@ body{
   <div class="page" id="page-7">
     <div class="page-header">
       <div class="page-icon"><i class="fa-solid fa-code"></i></div>
-      <div><h2>Cómo construí este CV</h2><p>Decisiones técnicas, arquitectura y lecciones aprendidas</p></div>
+      <div><h2 data-i18n="devTitle">Cómo construí este CV</h2><p data-i18n="devSub">Decisiones técnicas, arquitectura y lecciones aprendidas</p></div>
     </div>
     <div class="page-body">
 
       <!-- Tecnologías -->
-      <p class="section-title"><i class="fa-solid fa-layer-group" style="color:var(--accent);margin-right:6px"></i>Tecnologías utilizadas</p>
+      <p class="section-title"><i class="fa-solid fa-layer-group" style="color:var(--accent);margin-right:6px"></i><span data-i18n="techUsedTitle">Tecnologías utilizadas</span></p>
       <div class="profile-grid" style="margin-bottom:24px">
         <div class="profile-block">
-          <h3><i class="fa-solid fa-file-code"></i> Core — sin frameworks</h3>
-          <p>El portafolio está construido en <strong>HTML5, CSS3 vanilla y JavaScript puro</strong> (ES6+), sin ningún framework ni bundler. La decisión fue intencional: demostrar dominio de los fundamentos del frontend, reducir dependencias y producir un único archivo <code>.html</code> autocontenido que cualquier persona puede abrir, compartir y publicar sin instalar nada.</p>
+          <h3><i class="fa-solid fa-file-code"></i> <span data-i18n="coreTitle">Core — sin frameworks</span></h3>
+          <p data-i18n="coreDesc">El portafolio está construido en <strong>HTML5, CSS3 vanilla y JavaScript puro</strong> (ES6+), sin ningún framework ni bundler. La decisión fue intencional: demostrar dominio de los fundamentos del frontend, reducir dependencias y producir un único archivo <code>.html</code> autocontenido que cualquier persona puede abrir, compartir y publicar sin instalar nada.</p>
         </div>
         <div class="profile-block">
-          <h3><i class="fa-solid fa-satellite-dish"></i> CDNs externos</h3>
+          <h3><i class="fa-solid fa-satellite-dish"></i> <span data-i18n="cdnTitle">CDNs externos</span></h3>
           <ul class="info-list" style="margin-top:4px">
-            <li><i class="fa-brands fa-font-awesome"></i> <strong>Font Awesome 6.5</strong> — iconografía general</li>
-            <li><i class="fa-solid fa-cube"></i> <strong>Devicons 2.15</strong> — logos de tecnologías</li>
-            <li><i class="fa-brands fa-google"></i> <strong>Google Fonts</strong> — tipografías Syne + DM Sans</li>
+            <li><i class="fa-brands fa-font-awesome"></i> <strong>Font Awesome 6.5</strong> — <span data-i18n="cdnIcons">iconografía general</span></li>
+            <li><i class="fa-solid fa-cube"></i> <strong>Devicons 2.15</strong> — <span data-i18n="cdnLogos">logos de tecnologías</span></li>
+            <li><i class="fa-brands fa-google"></i> <strong>Google Fonts</strong> — <span data-i18n="cdnFonts">tipografías Syne + DM Sans</span></li>
           </ul>
         </div>
         <div class="profile-block">
-          <h3><i class="fa-solid fa-floppy-disk"></i> Persistencia</h3>
-          <p><strong>localStorage</strong> guarda la foto de perfil junto con su zoom y posición exacta (base64 + transform). La próxima vez que se abre el archivo en el mismo navegador, la foto restaura automáticamente el estado que tenía.</p>
+          <h3><i class="fa-solid fa-floppy-disk"></i> <span data-i18n="persistTitle">Persistencia</span></h3>
+          <p data-i18n="persistDesc"><strong>localStorage</strong> guarda la foto de perfil junto con su zoom y posición exacta (base64 + transform). La próxima vez que se abre el archivo en el mismo navegador, la foto restaura automáticamente el estado que tenía.</p>
         </div>
         <div class="profile-block">
-          <h3><i class="fa-solid fa-paintbrush"></i> Diseño visual</h3>
-          <p>Sistema de <strong>CSS Custom Properties</strong> (tokens de diseño) para paleta, sombras y radios. Tipografía dual: <em>Syne</em> para títulos con carácter y <em>DM Sans</em> para cuerpo legible. Color base <code>#1c3c6c</code> con acento azul y oro para jerarquía visual.</p>
+          <h3><i class="fa-solid fa-paintbrush"></i> <span data-i18n="visualDesignTitle">Diseño visual</span></h3>
+          <p data-i18n="visualDesignDesc">Sistema de <strong>CSS Custom Properties</strong> (tokens de diseño) para paleta, sombras y radios. Tipografía dual: <em>Syne</em> para títulos con carácter y <em>DM Sans</em> para cuerpo legible. Color base <code>#1c3c6c</code> con acento azul y oro para jerarquía visual.</p>
         </div>
       </div>
 
       <!-- Arquitectura -->
-      <p class="section-title"><i class="fa-solid fa-sitemap" style="color:var(--accent);margin-right:6px"></i>Arquitectura del archivo</p>
+      <p class="section-title"><i class="fa-solid fa-sitemap" style="color:var(--accent);margin-right:6px"></i><span data-i18n="archTitle">Arquitectura del archivo</span></p>
       <div class="profile-block full" style="margin-bottom:24px">
-        <h3><i class="fa-solid fa-diagram-project"></i> Single-file SPA simulada</h3>
-        <p>El archivo funciona como una <strong>Single Page Application sin router</strong>. Cada sección es un <code>&lt;div class="page"&gt;</code> con <code>display:none</code> por defecto. La función <code>goTo(n)</code> activa una página ocultando las demás con <code>classList.toggle('active')</code>. La navegación responde a clics en pestañas, flechas de teclado (←→) y botones prev/next. La animación de transición es un <code>@keyframes fadeIn</code> CSS aplicado al activarse la clase.</p>
+        <h3><i class="fa-solid fa-diagram-project"></i> <span data-i18n="spaTitle">Single-file SPA simulada</span></h3>
+        <p data-i18n="spaDesc">El archivo funciona como una <strong>Single Page Application sin router</strong>. Cada sección es un <code>&lt;div class="page"&gt;</code> con <code>display:none</code> por defecto. La función <code>goTo(n)</code> activa una página ocultando las demás con <code>classList.toggle('active')</code>. La navegación responde a clics en pestañas, flechas de teclado (←→) y botones prev/next. La animación de transición es un <code>@keyframes fadeIn</code> CSS aplicado al activarse la clase.</p>
         <div class="tag-cloud" style="margin-top:12px">
-          <span class="tag">8 páginas</span>
-          <span class="tag accent">1 archivo HTML</span>
-          <span class="tag">0 dependencias locales</span>
+          <span class="tag" data-i18n="tag8pages">8 páginas</span>
+          <span class="tag accent" data-i18n="tag1file">1 archivo HTML</span>
+          <span class="tag" data-i18n="tag0deps">0 dependencias locales</span>
           <span class="tag gold">~1200 líneas</span>
-          <span class="tag">CSS tokens</span>
+          <span class="tag" data-i18n="tagCssTokens">CSS tokens</span>
           <span class="tag accent">localStorage</span>
         </div>
       </div>
 
       <!-- Problemas resueltos -->
-      <p class="section-title"><i class="fa-solid fa-wrench" style="color:var(--accent);margin-right:6px"></i>Problemas resueltos</p>
+      <p class="section-title"><i class="fa-solid fa-wrench" style="color:var(--accent);margin-right:6px"></i><span data-i18n="problemsTitle">Problemas resueltos</span></p>
       <div class="timeline" style="margin-bottom:24px">
         <div class="tl-item">
           <div class="tl-dot" style="background:#e05252"><i class="fa-solid fa-bug"></i></div>
           <div class="tl-content">
-            <h3>PDF solo mostraba la página activa</h3>
-            <p>El CSS ocultaba las páginas inactivas con <code>display:none</code>, lo que hacía que al imprimir solo apareciera la visible. Solución: interceptar los eventos <code>beforeprint</code> y <code>afterprint</code> del navegador para mostrar todas las páginas antes de imprimir y restaurar el estado posterior. El botón "Descargar CV" usa la misma lógica vía <code>window.print()</code>.</p>
+            <h3 data-i18n="problem1Title">PDF solo mostraba la página activa</h3>
+            <p data-i18n="problem1Desc">El CSS ocultaba las páginas inactivas con <code>display:none</code>, lo que hacía que al imprimir solo apareciera la visible. Solución: interceptar los eventos <code>beforeprint</code> y <code>afterprint</code> del navegador para mostrar todas las páginas antes de imprimir y restaurar el estado posterior. El botón "Descargar CV" usa la misma lógica vía <code>window.print()</code>.</p>
           </div>
         </div>
         <div class="tl-item">
           <div class="tl-dot" style="background:#e09020"><i class="fa-solid fa-image"></i></div>
           <div class="tl-content">
-            <h3>Foto con tamaño fijo y sin persistencia</h3>
-            <p>La primera versión usaba <code>FileReader</code> directamente sobre <code>&lt;img&gt;</code>, lo que perdía la foto al recargar y no permitía ajustar el encuadre. Se implementó un <strong>modal editor</strong> con tres sliders (zoom 50–250%, posición X/Y ±80px) y <code>CSS transform: scale() translate()</code> aplicado en tiempo real. Al confirmar, se serializa todo en <code>localStorage</code> como objeto JSON con el base64 y los valores de transformación.</p>
+            <h3 data-i18n="problem2Title">Foto con tamaño fijo y sin persistencia</h3>
+            <p data-i18n="problem2Desc">La primera versión usaba <code>FileReader</code> directamente sobre <code>&lt;img&gt;</code>, lo que perdía la foto al recargar y no permitía ajustar el encuadre. Se implementó un <strong>modal editor</strong> con tres sliders (zoom 50–250%, posición X/Y ±80px) y <code>CSS transform: scale() translate()</code> aplicado en tiempo real. Al confirmar, se serializa todo en <code>localStorage</code> como objeto JSON con el base64 y los valores de transformación.</p>
           </div>
         </div>
         <div class="tl-item">
           <div class="tl-dot" style="background:#2a9d5c"><i class="fa-solid fa-mobile-screen"></i></div>
           <div class="tl-content">
-            <h3>Navegación desbordada en móvil</h3>
-            <p>Las 8 pestañas no caben en pantallas de 360px. Solución: <code>overflow-x:auto; flex-wrap:nowrap</code> en el contenedor de tabs con <code>scrollbar-width:none</code> para ocultar la barra de scroll. En móvil el nav se apila verticalmente y las pestañas se deslizan horizontalmente con el dedo.</p>
+            <h3 data-i18n="problem3Title">Navegación desbordada en móvil</h3>
+            <p data-i18n="problem3Desc">Las 8 pestañas no caben en pantallas de 360px. Solución: <code>overflow-x:auto; flex-wrap:nowrap</code> en el contenedor de tabs con <code>scrollbar-width:none</code> para ocultar la barra de scroll. En móvil el nav se apila verticalmente y las pestañas se deslizan horizontalmente con el dedo.</p>
           </div>
         </div>
         <div class="tl-item" style="padding-bottom:0">
           <div class="tl-dot" style="background:var(--accent)"><i class="fa-solid fa-print"></i></div>
           <div class="tl-content">
-            <h3>Colores desaparecían al imprimir</h3>
-            <p>Los navegadores suprimen colores de fondo por defecto al imprimir. Solución: <code>-webkit-print-color-adjust: exact; print-color-adjust: exact</code> en el bloque <code>@media print</code>, más <code>page-break-inside: avoid</code> en cada tarjeta para evitar cortes en medio de bloques de contenido.</p>
+            <h3 data-i18n="problem4Title">Colores desaparecían al imprimir</h3>
+            <p data-i18n="problem4Desc">Los navegadores suprimen colores de fondo por defecto al imprimir. Solución: <code>-webkit-print-color-adjust: exact; print-color-adjust: exact</code> en el bloque <code>@media print</code>, más <code>page-break-inside: avoid</code> en cada tarjeta para evitar cortes en medio de bloques de contenido.</p>
           </div>
         </div>
       </div>
 
       <!-- Funcionalidades -->
-      <p class="section-title"><i class="fa-solid fa-star" style="color:var(--accent);margin-right:6px"></i>Funcionalidades implementadas</p>
+      <p class="section-title"><i class="fa-solid fa-star" style="color:var(--accent);margin-right:6px"></i><span data-i18n="featuresTitle">Funcionalidades implementadas</span></p>
       <div class="services-grid" style="margin-bottom:24px">
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-book-open"></i></div>
-          <h3>Navegación tipo libro</h3>
-          <p>Pestañas, flechas de teclado y botones prev/next. Animación fade suave entre páginas. Contador de página visible.</p>
+          <h3 data-i18n="feat1Title">Navegación tipo libro</h3>
+          <p data-i18n="feat1Desc">Pestañas, flechas de teclado y botones prev/next. Animación fade suave entre páginas. Contador de página visible.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-camera"></i></div>
-          <h3>Editor de foto con persistencia</h3>
-          <p>Modal con zoom, posición X/Y. Guarda en localStorage. Restaura al reabrir el archivo en el mismo navegador.</p>
+          <h3 data-i18n="feat2Title">Editor de foto con persistencia</h3>
+          <p data-i18n="feat2Desc">Modal con zoom, posición X/Y. Guarda en localStorage. Restaura al reabrir el archivo en el mismo navegador.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-file-pdf"></i></div>
-          <h3>Descarga como PDF</h3>
-          <p>Botón y Ctrl+P muestran todas las páginas antes de imprimir y restauran la vista interactiva después.</p>
+          <h3 data-i18n="feat3Title">Descarga como PDF</h3>
+          <p data-i18n="feat3Desc">Botón y Ctrl+P muestran todas las páginas antes de imprimir y restauran la vista interactiva después.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-moon"></i></div>
-          <h3>Modo oscuro</h3>
-          <p>Toggle en la barra de navegación. CSS Custom Properties completas. Preferencia guardada en localStorage.</p>
+          <h3 data-i18n="feat4Title">Modo oscuro</h3>
+          <p data-i18n="feat4Desc">Toggle en la barra de navegación. CSS Custom Properties completas. Preferencia guardada en localStorage.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-language"></i></div>
-          <h3>Multiidioma ES / EN</h3>
-          <p>JSON de traducciones integrado. Cambio instantáneo sin recarga. Idioma guardado en localStorage.</p>
+          <h3 data-i18n="feat5Title">Multiidioma ES / EN</h3>
+          <p data-i18n="feat5Desc">JSON de traducciones integrado. Cambio instantáneo sin recarga. Idioma guardado en localStorage.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-paper-plane"></i></div>
-          <h3>Formulario de contacto</h3>
-          <p>Formulario funcional via Formspree. Sin backend ni servidor. Fallback automático a mailto si no hay ID configurado.</p>
+          <h3 data-i18n="feat6Title">Formulario de contacto</h3>
+          <p data-i18n="feat6Desc">Formulario funcional via Formspree. Sin backend ni servidor. Fallback automático a mailto si no hay ID configurado.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-          <h3>Animaciones Intersection Observer</h3>
-          <p>Elementos animados al entrar en viewport con reveal, reveal-left, reveal-scale y stagger escalonado.</p>
+          <h3 data-i18n="feat7Title">Animaciones Intersection Observer</h3>
+          <p data-i18n="feat7Desc">Elementos animados al entrar en viewport con reveal, reveal-left, reveal-scale y stagger escalonado.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-chart-simple"></i></div>
-          <h3>Analytics GA4 integrado</h3>
-          <p>Google Analytics 4 cargado dinámicamente. Solo activo si configuras tu Measurement ID. Tracking de page views.</p>
+          <h3 data-i18n="feat8Title">Analytics GA4 integrado</h3>
+          <p data-i18n="feat8Desc">Google Analytics 4 cargado dinámicamente. Solo activo si configuras tu Measurement ID. Tracking de page views.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><i class="fa-solid fa-file-arrow-down"></i></div>
-          <h3>Exportar configuración</h3>
-          <p>Botón JSON en la navbar descarga un archivo con tema, idioma, foto (base64) y ajustes actuales.</p>
+          <h3 data-i18n="feat9Title">Exportar configuración</h3>
+          <p data-i18n="feat9Desc">Botón JSON en la navbar descarga un archivo con tema, idioma, foto (base64) y ajustes actuales.</p>
         </div>
       </div>
 
       <!-- Mejoras futuras -->
-      <p class="section-title"><i class="fa-solid fa-rocket" style="color:var(--accent);margin-right:6px"></i>Mejoras futuras</p>
+      <p class="section-title"><i class="fa-solid fa-rocket" style="color:var(--accent);margin-right:6px"></i><span data-i18n="futureTitle">Mejoras futuras</span></p>
       <div class="cert-grid">
-        <div class="cert-chip"><i class="fa-brands fa-react" style="color:#61dafb"></i><div><strong>Migrar a React + Vite</strong><span>Componentes, estado, HMR</span></div></div>
-        <div class="cert-chip"><i class="fa-solid fa-cloud-arrow-up"></i><div><strong>Backend para foto</strong><span>Cloudinary o Supabase Storage</span></div></div>
-        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Modo oscuro ✓</strong><span>Toggle + CSS variables + localStorage</span></div></div>
-        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Multiidioma ES/EN ✓</strong><span>JSON traducciones + i18n manual</span></div></div>
-        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Formulario funcional ✓</strong><span>Formspree sin backend</span></div></div>
-        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Analytics integrado ✓</strong><span>Google Analytics 4</span></div></div>
-        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Animaciones avanzadas ✓</strong><span>Intersection Observer + scroll</span></div></div>
-        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong>Exportar config ✓</strong><span>JSON con foto + ajustes</span></div></div>
+        <div class="cert-chip"><i class="fa-brands fa-react" style="color:#61dafb"></i><div><strong data-i18n="future1Title">Migrar a React + Vite</strong><span data-i18n="future1Desc">Componentes, estado, HMR</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-cloud-arrow-up"></i><div><strong data-i18n="future2Title">Backend para foto</strong><span data-i18n="future2Desc">Cloudinary o Supabase Storage</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong data-i18n="future3Title">Modo oscuro ✓</strong><span data-i18n="future3Desc">Toggle + CSS variables + localStorage</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong data-i18n="future4Title">Multiidioma ES/EN ✓</strong><span data-i18n="future4Desc">JSON traducciones + i18n manual</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong data-i18n="future5Title">Formulario funcional ✓</strong><span data-i18n="future5Desc">Formspree sin backend</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong data-i18n="future6Title">Analytics integrado ✓</strong><span>Google Analytics 4</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong data-i18n="future7Title">Animaciones avanzadas ✓</strong><span data-i18n="future7Desc">Intersection Observer + scroll</span></div></div>
+        <div class="cert-chip"><i class="fa-solid fa-circle-check" style="color:#22a06b"></i><div><strong data-i18n="future8Title">Exportar config ✓</strong><span data-i18n="future8Desc">JSON con foto + ajustes</span></div></div>
       </div>
 
     </div>
@@ -1266,32 +1270,32 @@ body{
 <!-- ══ PHOTO EDITOR MODAL ══ -->
 <div class="photo-modal-overlay" id="photoModal">
   <div class="photo-modal">
-    <h3><i class="fa-solid fa-image" style="color:var(--accent)"></i> Editor de foto de perfil</h3>
+    <h3><i class="fa-solid fa-image" style="color:var(--accent)"></i> <span data-i18n="photoModalTitle">Editor de foto de perfil</span></h3>
     <div class="photo-preview-wrap">
       <img id="modalPreviewImg" src="" alt="Preview" style="width:100%;height:100%;object-fit:cover;transform-origin:center;"/>
     </div>
     <div class="modal-controls">
       <div class="slider-row">
-        <label><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</label>
+        <label><i class="fa-solid fa-magnifying-glass-plus"></i> <span data-i18n="zoomLabel">Zoom</span></label>
         <input type="range" id="scaleSlider" min="50" max="250" value="100"/>
         <span id="scaleValue" style="width:38px;text-align:right;font-size:.78rem;color:var(--muted);">100%</span>
       </div>
       <div class="slider-row">
-        <label><i class="fa-solid fa-arrows-left-right"></i> Horizontal</label>
+        <label><i class="fa-solid fa-arrows-left-right"></i> <span data-i18n="horizontalLabel">Horizontal</span></label>
         <input type="range" id="offsetXSlider" min="-80" max="80" value="0"/>
       </div>
       <div class="slider-row">
-        <label><i class="fa-solid fa-arrows-up-down"></i> Vertical</label>
+        <label><i class="fa-solid fa-arrows-up-down"></i> <span data-i18n="verticalLabel">Vertical</span></label>
         <input type="range" id="offsetYSlider" min="-80" max="80" value="0"/>
       </div>
     </div>
     <div class="modal-actions">
       <button class="btn-modal change" onclick="document.getElementById('photoInput').click()">
-        <i class="fa-solid fa-folder-open"></i> Cambiar foto
+        <i class="fa-solid fa-folder-open"></i> <span data-i18n="changePhoto">Cambiar foto</span>
       </button>
-      <button class="btn-modal cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-modal cancel" onclick="closeModal()" data-i18n="cancelBtn">Cancelar</button>
       <button class="btn-modal confirm" onclick="confirmPhoto()">
-        <i class="fa-solid fa-floppy-disk"></i> Guardar
+        <i class="fa-solid fa-floppy-disk"></i> <span data-i18n="saveBtn">Guardar</span>
       </button>
     </div>
   </div>
@@ -1312,16 +1316,86 @@ const TRANSLATIONS = {
     coverDesc:'Tecnólogo SENA con experiencia práctica en desarrollo frontend, automatización de pruebas y administración de plataformas web. Apasionado por productos digitales que combinan funcionalidad, diseño e innovación.',
     coverBtnCV:'Descargar CV', coverBtnContact:'Contacto',
     stat1:'Certificaciones', stat2:'Exp. práctica', stat3:'Tecnologías', stat4:'Tecnólogo SENA',
+    editPhoto:'Editar foto', photoSaved:'Foto guardada',
     // Pages headers
     profileTitle:'Perfil Profesional', profileSub:'Quién soy y qué me define como profesional',
-    eduTitle:'Educación & Certificaciones', eduSub:'Formación académica y aprendizaje continuo',
-    servTitle:'Mis Servicios', servSub:'Lo que puedo hacer por tu proyecto o empresa',
-    skillsTitle:'Habilidades & Tecnologías', skillsSub:'Stack técnico organizado por área',
-    projTitle:'Proyectos', projSub:'6 repositorios reales en GitHub',
-    contactTitle:'Contacto & Referencias', contactSub:'¡Hablemos de tu próximo proyecto!',
+    eduTitle:'Educación &amp; Certificaciones', eduSub:'Formación académica y aprendizaje continuo',
+    servTitle:'Mis Servicios', servSub:'Lo que puedo hacer en proyectos o empresa',
+    skillsTitle:'Habilidades &amp; Tecnologías', skillsSub:'Stack técnico organizado por área',
+    projTitle:'Proyectos', projSub:'6 repositorios reales + 1 curso impartido en GitHub',
+    contactTitle:'Contacto &amp; Referencias', contactSub:'¡Hablemos de tu próximo proyecto!',
     devTitle:'Cómo construí este CV', devSub:'Decisiones técnicas, arquitectura y lecciones aprendidas',
+    // Profile page
+    profResumenTitle:'Resumen',
+    profResumen1:'Tecnólogo en Análisis y Desarrollo de Software del SENA, con experiencia práctica en desarrollo frontend, automatización de pruebas, administración de plataformas web educativas e <strong>instrucción técnica</strong>. Cuento con conocimientos en HTML, CSS, JavaScript, React y Node.js, además de experiencia en herramientas CMS como WordPress, Elementor y Moodle.',
+    profResumen2:'He editado e impartido el curso completo de <strong>Fundamentos de React</strong> en IzyAcademy, lo que me permitió consolidar habilidades de comunicación técnica, síntesis pedagógica y liderazgo en entornos de formación profesional. Participé también en diseño UI/UX con Figma y Adobe XD, y en automatización de pruebas con Python y Selenium WebDriver.',
+    profResumen3:'Me defino como <strong>Frontend Developer Junior</strong> con experiencia en <strong>QA Automation</strong>, administración de plataformas web y <strong>docencia técnica en React</strong>.',
+    personalData:'Datos personales',
+    experienceTitle:'Experiencia',
+    exp1Title:'Instructor – Curso Fundamentos de React',
+    exp1Desc:'Diseño curricular · Clases grabadas · Mentoría · Proyecto final guiado',
+    exp1Meta:'Docencia técnica · 2025',
+    exp2Desc:'Soporte Frontend · Documentación · QA Funcional · Plataformas web educativas',
+    exp2Meta:'Práctica profesional · 6 meses',
+    traitsTitle:'Rasgos clave',
+    trait1:'Proactivo', trait2:'Orientado al servicio', trait3:'Aprendizaje continuo',
+    trait4:'Trabajo colaborativo', trait5:'Visión integral', trait6:'Responsable',
+    trait7:'Adaptable', trait8:'Docencia técnica', trait9:'Comunicación clara',
+    // Education page
+    academicTitlesTitle:'Títulos Académicos',
+    edu1Title:'Bachiller Académico',
+    edu2Title:'Técnico en Mantenimiento y Reparación de Equipos de Cómputo',
+    edu3Title:'Tecnólogo en Análisis y Desarrollo de Software',
+    edu3Date:'Mayo 2026',
+    edu3Desc:'Reconocimiento a la Excelencia por sentido de pertenencia, liderazgo y rendimiento académico. SENA Regional Tolima, diciembre 2024.',
+    certsByInstitutionTitle:'Certificaciones por institución',
+    otherCerts:'Otros',
+    // Services page
+    serv1Title:'Desarrollo Frontend',
+    serv1Desc:'Interfaces web modernas, responsivas y accesibles con HTML5, CSS3, JavaScript y React. Integración con APIs REST.',
+    serv1Extra:'Componentes reutilizables, metodología BEM, experiencia con Elementor/WordPress y Moodle para plataformas CMS y educativas.',
+    serv2Title:'QA &amp; Automatización',
+    serv2Desc:'Pruebas funcionales y de rendimiento. Automatización con Selenium WebDriver, Screenplay y Python bajo el patrón POM.',
+    serv2Extra:'Ingeniería de Requerimientos para mapear escenarios de prueba. Pruebas no funcionales de performance. Documentación técnica de casos de prueba.',
+    serv3Title:'SEO &amp; Analytics',
+    serv3Desc:'Optimización on-page para motores de búsqueda. Análisis de tráfico con Google Analytics y visualización en Power BI.',
+    serv3Extra:'Configuración de etiquetas, seguimiento de eventos y creación de contenido digital orientado a métricas para redes sociales.',
+    serv4Title:'Diseño Corporativo',
+    serv4Desc:'Identidad visual, materiales gráficos y piezas para redes sociales con Adobe Illustrator, Photoshop, InDesign y Figma.',
+    serv4Extra:'Logotipos, manuales de marca, presentaciones corporativas e infografías. Certificado Adobe ACP. Edición audiovisual con integración Adobe.',
+    serv5Title:'Administración de Plataformas',
+    serv5Desc:'Gestión de plataformas educativas Moodle y sitios WordPress/Elementor. Soporte técnico, documentación y capacitación.',
+    serv6Title:'Backend &amp; Bases de Datos',
+    serv6Desc:'Desarrollo con Node.js y Java (API REST). Gestión de bases de datos SQL y MongoDB. Fundamentos de AWS para la nube.',
+    readMore:'Leer más ↓',
+    // Skills page
+    skillsFrontend:'Frontend', skillsBackendQA:'Backend &amp; QA Automation',
+    skillsDBCloud:'Bases de Datos &amp; Cloud', skillsUIUX:'UI/UX &amp; Diseño',
+    skillsMethods:'Metodologías &amp; Herramientas',
+    funcTests:'Pruebas funcionales', perfTests:'Pruebas de rendimiento',
+    excelIntermediate:'Excel Intermedio',
+    // Projects page
+    projInstructorTitle:'Instructor – Curso Fundamentos de React · IzyAcademy',
+    projInstructorDesc:'Edité e impartí el curso completo de Fundamentos de React para IzyAcademy (Q-Vision Technologies). Cubrí hooks, componentes, props, estado, eventos, rutas y conexiones con APIs. El repositorio base del curso (<em>IzyplusHD</em>) fue construido en paralelo como material práctico para los estudiantes.',
+    viewCourseRepo:'Ver repositorio del curso',
+    tagTeaching:'Docencia técnica', tagCurriculum:'Diseño curricular', tagMentoring:'Mentoría',
+    proj1Title:'Front-End – Decoraciones Ortiz (SENA)',
+    proj1Desc:'Interfaz de usuario para el aplicativo de ventas de la empresa Decoraciones Ortiz, desarrollada como proyecto de grado SENA. Construida en React con componentes modulares y flujo de gestión de ventas.',
+    proj2Title:'Back-End – Decoraciones Ortiz (SENA)',
+    proj2Desc:'API backend para el aplicativo de ventas de Decoraciones Ortiz. Desarrollado en Node.js con gestión de productos, clientes y pedidos para el proyecto de grado SENA.',
+    proj3Title:'IzyAcademy – Frontend React',
+    proj3Desc:'Repositorio oficial del frontend de la plataforma IzyAcademy para formación profesional. Aplicación web escrita en React con rutas, componentes dinámicos y consumo de APIs.',
+    tagFrontend:'Frontend',
+    proj4Title:'IzyAcademy – Backend Java / Spring Boot',
+    proj4Desc:'Backend RESTful para IzyAcademy. Gestiona usuarios con registro y autenticación segura de contraseñas usando Spring Security. Base de datos MariaDB vía JPA/Hibernate, construido con Maven y Java 21.',
+    proj5Title:'AutoRegistro – Suite de Automatización QA',
+    proj5Desc:'Suite completa de automatización en Python con Selenium WebDriver para gestionar procesos administrativos en Moodle y WordPress de IzyAcademy: registro de usuarios, asignación de cursos y tareas complejas sin errores.',
+    proj6Title:'IzyplusHD – Fundamentos de React',
+    proj6Desc:'Aplicación de práctica para el curso Fundamentos de React de IzyAcademy construida con Vite. Incluye componentes reutilizables, manejo de eventos, props y reglas de estilo simples como base de aprendizaje.',
+    tagComponents:'Componentes',
+    preview:'Previsualizar',
     // Contact
-    contactInfo:'Contacto', personalData:'Datos personales', sendMessage:'Enviar mensaje',
+    contactInfo:'Contacto', sendMessage:'Enviar mensaje',
     formName:'Nombre completo', formEmail:'Correo electrónico', formSubject:'Asunto',
     formMessage:'Mensaje', formSend:'Enviar mensaje',
     formNote:'Formulario enviado vía Formspree · Sin backend requerido',
@@ -1329,25 +1403,153 @@ const TRANSLATIONS = {
     formErr:'Error al enviar. Intenta por WhatsApp o email.',
     formLoading:'Enviando...',
     labRefs:'Referencias Laborales', personalRef:'Referencia Personal',
+    refJob1:'Ingeniero en Sistemas e Informática', refJob2:'Analista de Software',
+    sisterLabel:'Hermana',
     ctaText:'¿Listo para trabajar juntos?',
     exportBtn:'JSON',
+    // Dev page
+    techUsedTitle:'Tecnologías utilizadas',
+    coreTitle:'Core — sin frameworks',
+    coreDesc:'El portafolio está construido en <strong>HTML5, CSS3 vanilla y JavaScript puro</strong> (ES6+), sin ningún framework ni bundler. La decisión fue intencional: demostrar dominio de los fundamentos del frontend, reducir dependencias y producir un único archivo <code>.html</code> autocontenido que cualquier persona puede abrir, compartir y publicar sin instalar nada.',
+    cdnTitle:'CDNs externos',
+    cdnIcons:'iconografía general', cdnLogos:'logos de tecnologías', cdnFonts:'tipografías Syne + DM Sans',
+    persistTitle:'Persistencia',
+    persistDesc:'<strong>localStorage</strong> guarda la foto de perfil junto con su zoom y posición exacta (base64 + transform). La próxima vez que se abre el archivo en el mismo navegador, la foto restaura automáticamente el estado que tenía.',
+    visualDesignTitle:'Diseño visual',
+    visualDesignDesc:'Sistema de <strong>CSS Custom Properties</strong> (tokens de diseño) para paleta, sombras y radios. Tipografía dual: <em>Syne</em> para títulos con carácter y <em>DM Sans</em> para cuerpo legible. Color base <code>#1c3c6c</code> con acento azul y oro para jerarquía visual.',
+    archTitle:'Arquitectura del archivo',
+    spaTitle:'Single-file SPA simulada',
+    spaDesc:'El archivo funciona como una <strong>Single Page Application sin router</strong>. Cada sección es un <code>&lt;div class="page"&gt;</code> con <code>display:none</code> por defecto. La función <code>goTo(n)</code> activa una página ocultando las demás con <code>classList.toggle(\'active\')</code>. La navegación responde a clics en pestañas, flechas de teclado (←→) y botones prev/next. La animación de transición es un <code>@keyframes fadeIn</code> CSS aplicado al activarse la clase.',
+    tag8pages:'8 páginas', tag1file:'1 archivo HTML', tag0deps:'0 dependencias locales', tagCssTokens:'CSS tokens',
+    problemsTitle:'Problemas resueltos',
+    problem1Title:'PDF solo mostraba la página activa',
+    problem1Desc:'El CSS ocultaba las páginas inactivas con <code>display:none</code>, lo que hacía que al imprimir solo apareciera la visible. Solución: interceptar los eventos <code>beforeprint</code> y <code>afterprint</code> del navegador para mostrar todas las páginas antes de imprimir y restaurar el estado posterior. El botón "Descargar CV" usa la misma lógica vía <code>window.print()</code>.',
+    problem2Title:'Foto con tamaño fijo y sin persistencia',
+    problem2Desc:'La primera versión usaba <code>FileReader</code> directamente sobre <code>&lt;img&gt;</code>, lo que perdía la foto al recargar y no permitía ajustar el encuadre. Se implementó un <strong>modal editor</strong> con tres sliders (zoom 50–250%, posición X/Y ±80px) y <code>CSS transform: scale() translate()</code> aplicado en tiempo real. Al confirmar, se serializa todo en <code>localStorage</code> como objeto JSON con el base64 y los valores de transformación.',
+    problem3Title:'Navegación desbordada en móvil',
+    problem3Desc:'Las 8 pestañas no caben en pantallas de 360px. Solución: <code>overflow-x:auto; flex-wrap:nowrap</code> en el contenedor de tabs con <code>scrollbar-width:none</code> para ocultar la barra de scroll. En móvil el nav se apila verticalmente y las pestañas se deslizan horizontalmente con el dedo.',
+    problem4Title:'Colores desaparecían al imprimir',
+    problem4Desc:'Los navegadores suprimen colores de fondo por defecto al imprimir. Solución: <code>-webkit-print-color-adjust: exact; print-color-adjust: exact</code> en el bloque <code>@media print</code>, más <code>page-break-inside: avoid</code> en cada tarjeta para evitar cortes en medio de bloques de contenido.',
+    featuresTitle:'Funcionalidades implementadas',
+    feat1Title:'Navegación tipo libro',
+    feat1Desc:'Pestañas, flechas de teclado y botones prev/next. Animación fade suave entre páginas. Contador de página visible.',
+    feat2Title:'Editor de foto con persistencia',
+    feat2Desc:'Modal con zoom, posición X/Y. Guarda en localStorage. Restaura al reabrir el archivo en el mismo navegador.',
+    feat3Title:'Descarga como PDF',
+    feat3Desc:'Botón y Ctrl+P muestran todas las páginas antes de imprimir y restauran la vista interactiva después.',
+    feat4Title:'Modo oscuro',
+    feat4Desc:'Toggle en la barra de navegación. CSS Custom Properties completas. Preferencia guardada en localStorage.',
+    feat5Title:'Multiidioma ES / EN',
+    feat5Desc:'JSON de traducciones integrado. Cambio instantáneo sin recarga. Idioma guardado en localStorage.',
+    feat6Title:'Formulario de contacto',
+    feat6Desc:'Formulario funcional via Formspree. Sin backend ni servidor. Fallback automático a mailto si no hay ID configurado.',
+    feat7Title:'Animaciones Intersection Observer',
+    feat7Desc:'Elementos animados al entrar en viewport con reveal, reveal-left, reveal-scale y stagger escalonado.',
+    feat8Title:'Analytics GA4 integrado',
+    feat8Desc:'Google Analytics 4 cargado dinámicamente. Solo activo si configuras tu Measurement ID. Tracking de page views.',
+    feat9Title:'Exportar configuración',
+    feat9Desc:'Botón JSON en la navbar descarga un archivo con tema, idioma, foto (base64) y ajustes actuales.',
+    futureTitle:'Mejoras futuras',
+    future1Title:'Migrar a React + Vite', future1Desc:'Componentes, estado, HMR',
+    future2Title:'Backend para foto', future2Desc:'Cloudinary o Supabase Storage',
+    future3Title:'Modo oscuro ✓', future3Desc:'Toggle + CSS variables + localStorage',
+    future4Title:'Multiidioma ES/EN ✓', future4Desc:'JSON traducciones + i18n manual',
+    future5Title:'Formulario funcional ✓', future5Desc:'Formspree sin backend',
+    future6Title:'Analytics integrado ✓',
+    future7Title:'Animaciones avanzadas ✓', future7Desc:'Intersection Observer + scroll',
+    future8Title:'Exportar config ✓', future8Desc:'JSON con foto + ajustes',
+    // Photo modal
+    photoModalTitle:'Editor de foto de perfil',
+    zoomLabel:'Zoom', horizontalLabel:'Horizontal', verticalLabel:'Vertical',
+    changePhoto:'Cambiar foto', cancelBtn:'Cancelar', saveBtn:'Guardar',
   },
   en: {
     tab0:'🏠 Home', tab1:'Profile', tab2:'Education', tab3:'Services',
     tab4:'Skills', tab5:'Projects', tab6:'Contact', tab7:'⚙️ Dev',
     coverBadge:'Available for projects',
-    coverTitle:'Software Analyst & Developer · QA Automation · UI/UX',
+    coverTitle:'Software Analyst &amp; Developer · QA Automation · UI/UX',
     coverDesc:'SENA Technologist with hands-on experience in frontend development, test automation and web platform administration. Passionate about digital products that combine functionality, design and innovation.',
     coverBtnCV:'Download CV', coverBtnContact:'Contact',
     stat1:'Certifications', stat2:'Practical exp.', stat3:'Technologies', stat4:'SENA Grad',
+    editPhoto:'Edit photo', photoSaved:'Photo saved',
     profileTitle:'Professional Profile', profileSub:'Who I am and what defines me as a professional',
-    eduTitle:'Education & Certifications', eduSub:'Academic background and continuous learning',
+    eduTitle:'Education &amp; Certifications', eduSub:'Academic background and continuous learning',
     servTitle:'My Services', servSub:'What I can do for your project or company',
-    skillsTitle:'Skills & Technologies', skillsSub:'Technical stack organized by area',
-    projTitle:'Projects', projSub:'6 real GitHub repositories',
-    contactTitle:'Contact & References', contactSub:"Let's talk about your next project!",
+    skillsTitle:'Skills &amp; Technologies', skillsSub:'Technical stack organized by area',
+    projTitle:'Projects', projSub:'6 real repositories + 1 course taught on GitHub',
+    contactTitle:'Contact &amp; References', contactSub:"Let's talk about your next project!",
     devTitle:'How I built this CV', devSub:'Technical decisions, architecture and lessons learned',
-    contactInfo:'Contact', personalData:'Personal info', sendMessage:'Send message',
+    // Profile page
+    profResumenTitle:'Summary',
+    profResumen1:'SENA Technologist in Software Analysis and Development, with hands-on experience in frontend development, test automation, educational web platform administration and <strong>technical instruction</strong>. Skilled in HTML, CSS, JavaScript, React and Node.js, plus experience with CMS tools like WordPress, Elementor and Moodle.',
+    profResumen2:'I designed and taught the complete <strong>React Fundamentals</strong> course at IzyAcademy, which strengthened my technical communication, pedagogical synthesis and leadership skills in professional training environments. I also worked on UI/UX design with Figma and Adobe XD, and test automation with Python and Selenium WebDriver.',
+    profResumen3:'I define myself as a <strong>Junior Frontend Developer</strong> with experience in <strong>QA Automation</strong>, web platform administration and <strong>React technical instruction</strong>.',
+    personalData:'Personal info',
+    experienceTitle:'Experience',
+    exp1Title:'Instructor – React Fundamentals Course',
+    exp1Desc:'Curriculum design · Recorded classes · Mentoring · Guided final project',
+    exp1Meta:'Technical instruction · 2025',
+    exp2Desc:'Frontend Support · Documentation · Functional QA · Educational web platforms',
+    exp2Meta:'Professional internship · 6 months',
+    traitsTitle:'Key traits',
+    trait1:'Proactive', trait2:'Service-oriented', trait3:'Continuous learning',
+    trait4:'Collaborative work', trait5:'Big-picture vision', trait6:'Responsible',
+    trait7:'Adaptable', trait8:'Technical teaching', trait9:'Clear communication',
+    // Education page
+    academicTitlesTitle:'Academic Degrees',
+    edu1Title:'High School Diploma',
+    edu2Title:'Technician in Computer Equipment Maintenance and Repair',
+    edu3Title:'Technologist in Software Analysis and Development',
+    edu3Date:'May 2026',
+    edu3Desc:'Excellence Recognition for sense of belonging, leadership and academic performance. SENA Tolima Regional, December 2024.',
+    certsByInstitutionTitle:'Certifications by institution',
+    otherCerts:'Other',
+    // Services page
+    serv1Title:'Frontend Development',
+    serv1Desc:'Modern, responsive and accessible web interfaces with HTML5, CSS3, JavaScript and React. REST API integration.',
+    serv1Extra:'Reusable components, BEM methodology, experience with Elementor/WordPress and Moodle for CMS and educational platforms.',
+    serv2Title:'QA &amp; Automation',
+    serv2Desc:'Functional and performance testing. Automation with Selenium WebDriver, Screenplay and Python using the POM pattern.',
+    serv2Extra:'Requirements engineering to map test scenarios. Non-functional performance testing. Technical documentation of test cases.',
+    serv3Title:'SEO &amp; Analytics',
+    serv3Desc:'On-page optimization for search engines. Traffic analysis with Google Analytics and visualization in Power BI.',
+    serv3Extra:'Tag configuration, event tracking and metric-driven digital content creation for social media.',
+    serv4Title:'Corporate Design',
+    serv4Desc:'Visual identity, graphic materials and social media assets with Adobe Illustrator, Photoshop, InDesign and Figma.',
+    serv4Extra:'Logos, brand manuals, corporate presentations and infographics. Adobe ACP certified. Audiovisual editing with Adobe integration.',
+    serv5Title:'Platform Administration',
+    serv5Desc:'Management of Moodle educational platforms and WordPress/Elementor sites. Technical support, documentation and training.',
+    serv6Title:'Backend &amp; Databases',
+    serv6Desc:'Development with Node.js and Java (REST API). SQL and MongoDB database management. AWS cloud fundamentals.',
+    readMore:'Read more ↓',
+    // Skills page
+    skillsFrontend:'Frontend', skillsBackendQA:'Backend &amp; QA Automation',
+    skillsDBCloud:'Databases &amp; Cloud', skillsUIUX:'UI/UX &amp; Design',
+    skillsMethods:'Methodologies &amp; Tools',
+    funcTests:'Functional testing', perfTests:'Performance testing',
+    excelIntermediate:'Intermediate Excel',
+    // Projects page
+    projInstructorTitle:'Instructor – React Fundamentals Course · IzyAcademy',
+    projInstructorDesc:'Designed and taught the complete React Fundamentals course for IzyAcademy (Q-Vision Technologies). Covered hooks, components, props, state, events, routes and API connections. The course base repository (<em>IzyplusHD</em>) was built in parallel as practical material for students.',
+    viewCourseRepo:'View course repository',
+    tagTeaching:'Technical teaching', tagCurriculum:'Curriculum design', tagMentoring:'Mentoring',
+    proj1Title:'Front-End – Decoraciones Ortiz (SENA)',
+    proj1Desc:'User interface for the sales application of the Decoraciones Ortiz company, developed as a SENA graduation project. Built in React with modular components and a sales management flow.',
+    proj2Title:'Back-End – Decoraciones Ortiz (SENA)',
+    proj2Desc:'Backend API for the Decoraciones Ortiz sales application. Developed in Node.js with product, customer and order management for the SENA graduation project.',
+    proj3Title:'IzyAcademy – React Frontend',
+    proj3Desc:'Official frontend repository for the IzyAcademy professional training platform. Web application written in React with routes, dynamic components and API consumption.',
+    tagFrontend:'Frontend',
+    proj4Title:'IzyAcademy – Java / Spring Boot Backend',
+    proj4Desc:'RESTful backend for IzyAcademy. Manages users with registration and secure password authentication using Spring Security. MariaDB database via JPA/Hibernate, built with Maven and Java 21.',
+    proj5Title:'AutoRegistro – QA Automation Suite',
+    proj5Desc:"Complete Python automation suite with Selenium WebDriver to manage administrative processes in IzyAcademy's Moodle and WordPress: user registration, course assignment and complex error-free tasks.",
+    proj6Title:'IzyplusHD – React Fundamentals',
+    proj6Desc:'Practice application for the IzyAcademy React Fundamentals course, built with Vite. Includes reusable components, event handling, props and simple style rules as a learning base.',
+    tagComponents:'Components',
+    preview:'Preview',
+    // Contact
+    contactInfo:'Contact', sendMessage:'Send message',
     formName:'Full name', formEmail:'Email address', formSubject:'Subject',
     formMessage:'Message', formSend:'Send message',
     formNote:'Form sent via Formspree · No backend required',
@@ -1355,8 +1557,65 @@ const TRANSLATIONS = {
     formErr:'Send error. Try WhatsApp or email.',
     formLoading:'Sending...',
     labRefs:'Work References', personalRef:'Personal Reference',
+    refJob1:'Systems &amp; IT Engineer', refJob2:'Software Analyst',
+    sisterLabel:'Sister',
     ctaText:'Ready to work together?',
     exportBtn:'JSON',
+    // Dev page
+    techUsedTitle:'Technologies used',
+    coreTitle:'Core — framework-free',
+    coreDesc:'This portfolio is built with <strong>HTML5, vanilla CSS3 and pure JavaScript</strong> (ES6+), with no framework or bundler. The decision was intentional: to demonstrate mastery of frontend fundamentals, reduce dependencies and produce a single self-contained <code>.html</code> file that anyone can open, share and publish without installing anything.',
+    cdnTitle:'External CDNs',
+    cdnIcons:'general iconography', cdnLogos:'technology logos', cdnFonts:'Syne + DM Sans typography',
+    persistTitle:'Persistence',
+    persistDesc:'<strong>localStorage</strong> saves the profile photo along with its exact zoom and position (base64 + transform). The next time the file is opened in the same browser, the photo automatically restores its previous state.',
+    visualDesignTitle:'Visual design',
+    visualDesignDesc:'A <strong>CSS Custom Properties</strong> system (design tokens) for palette, shadows and radii. Dual typography: <em>Syne</em> for distinctive headings and <em>DM Sans</em> for readable body text. Base color <code>#1c3c6c</code> with blue and gold accents for visual hierarchy.',
+    archTitle:'File architecture',
+    spaTitle:'Simulated single-file SPA',
+    spaDesc:'The file works as a <strong>routerless Single Page Application</strong>. Each section is a <code>&lt;div class="page"&gt;</code> with <code>display:none</code> by default. The <code>goTo(n)</code> function activates a page while hiding the rest using <code>classList.toggle(\'active\')</code>. Navigation responds to tab clicks, keyboard arrows (←→) and prev/next buttons. The transition animation is a CSS <code>@keyframes fadeIn</code> applied on activation.',
+    tag8pages:'8 pages', tag1file:'1 HTML file', tag0deps:'0 local dependencies', tagCssTokens:'CSS tokens',
+    problemsTitle:'Problems solved',
+    problem1Title:'PDF only showed the active page',
+    problem1Desc:'CSS hid inactive pages with <code>display:none</code>, so printing only showed the visible one. Solution: intercept the browser\'s <code>beforeprint</code> and <code>afterprint</code> events to show all pages before printing and restore state afterward. The "Download CV" button uses the same logic via <code>window.print()</code>.',
+    problem2Title:'Fixed-size photo with no persistence',
+    problem2Desc:'The first version used <code>FileReader</code> directly on an <code>&lt;img&gt;</code>, which lost the photo on reload and didn\'t allow framing adjustments. A <strong>modal editor</strong> was implemented with three sliders (zoom 50–250%, X/Y position ±80px) and <code>CSS transform: scale() translate()</code> applied in real time. On confirm, everything is serialized into <code>localStorage</code> as a JSON object with the base64 data and transform values.',
+    problem3Title:'Navigation overflow on mobile',
+    problem3Desc:'The 8 tabs don\'t fit on 360px screens. Solution: <code>overflow-x:auto; flex-wrap:nowrap</code> on the tabs container with <code>scrollbar-width:none</code> to hide the scrollbar. On mobile the nav stacks vertically and tabs scroll horizontally by touch.',
+    problem4Title:'Colors disappeared when printing',
+    problem4Desc:'Browsers suppress background colors by default when printing. Solution: <code>-webkit-print-color-adjust: exact; print-color-adjust: exact</code> in the <code>@media print</code> block, plus <code>page-break-inside: avoid</code> on each card to prevent mid-content breaks.',
+    featuresTitle:'Implemented features',
+    feat1Title:'Book-style navigation',
+    feat1Desc:'Tabs, keyboard arrows and prev/next buttons. Smooth fade animation between pages. Visible page counter.',
+    feat2Title:'Photo editor with persistence',
+    feat2Desc:'Modal with zoom, X/Y position. Saves to localStorage. Restores when reopening the file in the same browser.',
+    feat3Title:'Download as PDF',
+    feat3Desc:'Button and Ctrl+P show all pages before printing and restore the interactive view afterward.',
+    feat4Title:'Dark mode',
+    feat4Desc:'Toggle in the nav bar. Complete CSS Custom Properties. Preference saved to localStorage.',
+    feat5Title:'Multilingual ES / EN',
+    feat5Desc:'Built-in translation JSON. Instant switching without reload. Language saved to localStorage.',
+    feat6Title:'Contact form',
+    feat6Desc:'Functional form via Formspree. No backend or server. Automatic mailto fallback if no ID is configured.',
+    feat7Title:'Intersection Observer animations',
+    feat7Desc:'Elements animate on entering the viewport with reveal, reveal-left, reveal-scale and staggered effects.',
+    feat8Title:'Integrated GA4 analytics',
+    feat8Desc:'Google Analytics 4 loaded dynamically. Only active if you configure your Measurement ID. Page view tracking.',
+    feat9Title:'Export configuration',
+    feat9Desc:'JSON button in the navbar downloads a file with theme, language, photo (base64) and current settings.',
+    futureTitle:'Future improvements',
+    future1Title:'Migrate to React + Vite', future1Desc:'Components, state, HMR',
+    future2Title:'Backend for photo storage', future2Desc:'Cloudinary or Supabase Storage',
+    future3Title:'Dark mode ✓', future3Desc:'Toggle + CSS variables + localStorage',
+    future4Title:'Multilingual ES/EN ✓', future4Desc:'Translation JSON + manual i18n',
+    future5Title:'Functional form ✓', future5Desc:'Formspree without backend',
+    future6Title:'Integrated analytics ✓',
+    future7Title:'Advanced animations ✓', future7Desc:'Intersection Observer + scroll',
+    future8Title:'Export config ✓', future8Desc:'JSON with photo + settings',
+    // Photo modal
+    photoModalTitle:'Profile photo editor',
+    zoomLabel:'Zoom', horizontalLabel:'Horizontal', verticalLabel:'Vertical',
+    changePhoto:'Change photo', cancelBtn:'Cancel', saveBtn:'Save',
   }
 };
 
@@ -1372,7 +1631,7 @@ function applyTranslations(){
   // Elements with data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if(t[key] !== undefined) el.textContent = t[key];
+    if(t[key] !== undefined) el.innerHTML = t[key];
   });
   // Cover special
   const coverBadgeEl = document.querySelector('.cover-badge');
